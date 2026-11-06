@@ -1,6 +1,5 @@
 from datetime import date
 from fastapi import FastAPI, HTTPException, Query
-from app.database import get_indicadores_gerais
 
 from app.analytics import (
     carregar_pedidos,
@@ -8,6 +7,13 @@ from app.analytics import (
     calcular_por_regiao,
     calcular_por_categoria,
     filtrar_por_periodo
+)
+
+from app.database import (
+    get_indicadores_gerais,
+    get_indicadores_por_regiao,
+    get_indicadores_por_categoria,
+    get_regioes_por_periodo,
 )
 
 app = FastAPI(
@@ -177,4 +183,47 @@ def get_metrics_database():
         "status": "success",
         "source": "postgresql",
         "data": indicadores,
+    }
+
+
+@app.get("/metrics/database/regions")
+def get_database_regions():
+    return {
+        "status": "success",
+        "source": "postgresql",
+        "data": get_indicadores_por_regiao(),
+    }
+
+
+@app.get("/metrics/database/categories")
+def get_database_categories():
+    return {
+        "status": "success",
+        "source": "postgresql",
+        "data": get_indicadores_por_categoria(),
+    }
+
+
+@app.get("/metrics/database/regions/period")
+def get_database_regions_by_period(
+    start_date: date,
+    end_date: date,
+):
+    if start_date > end_date:
+        raise HTTPException(
+            status_code=400,
+            detail="A data inicial não pode ser posterior à final.",
+        )
+
+    return {
+        "status": "success",
+        "source": "postgresql",
+        "period": {
+            "start_date": start_date.isoformat(),
+            "end_date": end_date.isoformat(),
+        },
+        "data": get_regioes_por_periodo(
+            start_date,
+            end_date,
+        ),
     }
