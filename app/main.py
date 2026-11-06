@@ -1,6 +1,6 @@
 from datetime import date
 from fastapi import FastAPI, HTTPException, Query
-
+from app.database import get_indicadores_gerais
 
 from app.analytics import (
     carregar_pedidos,
@@ -166,4 +166,15 @@ def get_categories_by_period(
             "end_date": end_date.isoformat()
         },
         "data": calcular_por_categoria(pedidos_filtrados)
+    }
+
+
+@app.get("/metrics/database")
+def get_metrics_database():
+    indicadores = get_indicadores_gerais()
+
+    return {
+        "status": "success",
+        "source": "postgresql",
+        "data": indicadores,
     }
