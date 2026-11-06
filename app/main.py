@@ -1,6 +1,6 @@
 from datetime import date
-from fastapi import HTTPException, Query
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Query
+
 
 from app.analytics import (
     carregar_pedidos,
@@ -96,4 +96,74 @@ def get_metrics_by_period(
             "end_date": end_date.isoformat()
         },
         "data": calcular_indicadores(pedidos_filtrados)
+    }
+
+
+@app.get("/metrics/regions/period")
+def get_regions_by_period(
+    start_date: date = Query(
+        ...,
+        description="Data inicial no formato AAAA-MM-DD"
+    ),
+    end_date: date = Query(
+        ...,
+        description="Data final no formato AAAA-MM-DD"
+    )
+):
+    if start_date > end_date:
+        raise HTTPException(
+            status_code=400,
+            detail="A data inicial não pode ser posterior à final."
+        )
+
+    pedidos = carregar_pedidos()
+
+    pedidos_filtrados = filtrar_por_periodo(
+        pedidos,
+        start_date,
+        end_date
+    )
+
+    return {
+        "status": "success",
+        "period": {
+            "start_date": start_date.isoformat(),
+            "end_date": end_date.isoformat()
+        },
+        "data": calcular_por_regiao(pedidos_filtrados)
+    }
+
+
+@app.get("/metrics/categories/period")
+def get_categories_by_period(
+    start_date: date = Query(
+        ...,
+        description="Data inicial no formato AAAA-MM-DD"
+    ),
+    end_date: date = Query(
+        ...,
+        description="Data final no formato AAAA-MM-DD"
+    )
+):
+    if start_date > end_date:
+        raise HTTPException(
+            status_code=400,
+            detail="A data inicial não pode ser posterior à final."
+        )
+
+    pedidos = carregar_pedidos()
+
+    pedidos_filtrados = filtrar_por_periodo(
+        pedidos,
+        start_date,
+        end_date
+    )
+
+    return {
+        "status": "success",
+        "period": {
+            "start_date": start_date.isoformat(),
+            "end_date": end_date.isoformat()
+        },
+        "data": calcular_por_categoria(pedidos_filtrados)
     }
