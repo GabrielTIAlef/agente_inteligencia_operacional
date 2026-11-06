@@ -1,6 +1,7 @@
 
 import csv
 from pathlib import Path
+from datetime import date
 
 # Identifica a pasta principal do projeto.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -110,6 +111,26 @@ def calcular_por_categoria(pedidos):
         key=lambda item: item["taxa_atraso"],
         reverse=True
     )
+
+
+def filtrar_por_periodo(
+    pedidos,
+    data_inicio: date,
+    data_fim: date
+):
+    """Filtra pedidos por um intervalo de datas, inclusive."""
+
+    pedidos_filtrados = []
+
+    for pedido in pedidos:
+        data_pedido = date.fromisoformat(
+            pedido["data_pedido"]
+        )
+
+        if data_inicio <= data_pedido <= data_fim:
+            pedidos_filtrados.append(pedido)
+
+    return pedidos_filtrados
 
 
 if __name__ == "__main__":
