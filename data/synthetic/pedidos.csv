@@ -1,0 +1,1001 @@
+pedido_id,data_pedido,regiao,categoria,valor,status
+1,2026-10-21,Brasília,Restaurante,190.56,entregue
+2,2026-10-05,Brasília,Farmácia,190.35,entregue
+3,2026-10-19,Belo Horizonte,Restaurante,26.85,entregue
+4,2026-10-17,Curitiba,Restaurante,149.09,entregue
+5,2026-10-23,Curitiba,Mercado,70.7,entregue
+6,2026-10-26,Brasília,Restaurante,180.57,entregue
+7,2026-10-05,São Paulo,Mercado,43.51,entregue
+8,2026-10-12,Rio de Janeiro,Farmácia,80.84,entregue
+9,2026-10-15,Curitiba,Restaurante,243.82,entregue
+10,2026-10-18,Rio de Janeiro,Farmácia,162.26,cancelado
+11,2026-10-19,São Paulo,Farmácia,36.0,entregue
+12,2026-10-25,Rio de Janeiro,Restaurante,216.72,cancelado
+13,2026-10-13,Rio de Janeiro,Mercado,166.21,entregue
+14,2026-10-12,Rio de Janeiro,Restaurante,174.14,entregue
+15,2026-10-22,Brasília,Farmácia,166.05,entregue
+16,2026-10-08,São Paulo,Mercado,107.27,em_atraso
+17,2026-10-21,Curitiba,Restaurante,177.46,cancelado
+18,2026-10-25,Brasília,Restaurante,209.01,cancelado
+19,2026-10-13,Rio de Janeiro,Restaurante,68.53,em_atraso
+20,2026-10-29,Rio de Janeiro,Restaurante,170.75,entregue
+21,2026-10-30,Belo Horizonte,Restaurante,80.92,entregue
+22,2026-10-18,Curitiba,Mercado,191.81,entregue
+23,2026-10-19,Belo Horizonte,Mercado,70.44,em_atraso
+24,2026-10-17,Belo Horizonte,Restaurante,193.83,cancelado
+25,2026-10-05,São Paulo,Farmácia,117.1,entregue
+26,2026-10-13,Curitiba,Mercado,141.7,em_atraso
+27,2026-10-28,Brasília,Farmácia,185.77,entregue
+28,2026-10-18,Rio de Janeiro,Farmácia,98.24,entregue
+29,2026-10-06,Belo Horizonte,Restaurante,239.38,cancelado
+30,2026-10-09,Curitiba,Restaurante,136.77,entregue
+31,2026-10-21,Rio de Janeiro,Farmácia,136.76,entregue
+32,2026-10-12,São Paulo,Farmácia,239.3,em_atraso
+33,2026-10-30,Brasília,Farmácia,94.56,entregue
+34,2026-10-30,Rio de Janeiro,Mercado,75.07,entregue
+35,2026-10-19,Brasília,Restaurante,188.34,cancelado
+36,2026-10-25,Curitiba,Restaurante,49.53,entregue
+37,2026-10-18,São Paulo,Mercado,141.36,entregue
+38,2026-10-31,São Paulo,Farmácia,193.71,entregue
+39,2026-10-23,Rio de Janeiro,Mercado,248.88,entregue
+40,2026-10-15,Curitiba,Mercado,47.83,entregue
+41,2026-10-11,Brasília,Farmácia,147.4,entregue
+42,2026-10-01,Brasília,Farmácia,165.15,entregue
+43,2026-10-29,Brasília,Mercado,36.3,entregue
+44,2026-10-22,Belo Horizonte,Restaurante,144.02,entregue
+45,2026-10-29,Curitiba,Farmácia,128.71,entregue
+46,2026-10-26,Belo Horizonte,Restaurante,41.69,entregue
+47,2026-10-12,Belo Horizonte,Mercado,127.42,entregue
+48,2026-10-22,Brasília,Restaurante,112.6,entregue
+49,2026-10-28,Brasília,Restaurante,64.07,entregue
+50,2026-10-05,Belo Horizonte,Restaurante,84.07,entregue
+51,2026-10-30,Brasília,Mercado,205.85,cancelado
+52,2026-10-04,Brasília,Farmácia,249.83,cancelado
+53,2026-10-03,São Paulo,Restaurante,113.48,entregue
+54,2026-10-28,Belo Horizonte,Restaurante,57.87,entregue
+55,2026-10-13,Rio de Janeiro,Mercado,85.61,entregue
+56,2026-10-24,Curitiba,Farmácia,185.23,entregue
+57,2026-10-10,São Paulo,Restaurante,153.21,entregue
+58,2026-10-24,Rio de Janeiro,Restaurante,31.53,entregue
+59,2026-10-30,Curitiba,Restaurante,33.08,entregue
+60,2026-10-28,São Paulo,Restaurante,156.86,entregue
+61,2026-10-08,Belo Horizonte,Restaurante,236.57,entregue
+62,2026-10-19,Curitiba,Restaurante,162.46,entregue
+63,2026-10-19,Curitiba,Farmácia,92.77,entregue
+64,2026-10-22,Rio de Janeiro,Restaurante,81.09,entregue
+65,2026-10-21,Rio de Janeiro,Mercado,92.72,entregue
+66,2026-10-03,Brasília,Mercado,162.87,entregue
+67,2026-10-04,Brasília,Farmácia,69.03,entregue
+68,2026-10-30,Rio de Janeiro,Restaurante,222.23,entregue
+69,2026-10-06,Belo Horizonte,Farmácia,181.81,entregue
+70,2026-10-26,Curitiba,Restaurante,173.61,entregue
+71,2026-10-30,Brasília,Restaurante,80.83,em_atraso
+72,2026-10-24,Curitiba,Restaurante,82.64,entregue
+73,2026-10-23,Rio de Janeiro,Restaurante,178.12,cancelado
+74,2026-10-17,Belo Horizonte,Mercado,228.23,cancelado
+75,2026-10-03,Belo Horizonte,Mercado,30.14,entregue
+76,2026-10-05,Rio de Janeiro,Restaurante,190.48,entregue
+77,2026-10-14,Curitiba,Restaurante,45.73,em_atraso
+78,2026-10-23,São Paulo,Farmácia,28.29,entregue
+79,2026-10-18,São Paulo,Mercado,49.31,entregue
+80,2026-10-29,Brasília,Mercado,68.32,entregue
+81,2026-10-04,Rio de Janeiro,Farmácia,223.35,entregue
+82,2026-10-20,São Paulo,Restaurante,218.86,em_atraso
+83,2026-10-26,São Paulo,Mercado,25.7,entregue
+84,2026-10-11,Belo Horizonte,Farmácia,218.73,cancelado
+85,2026-10-09,São Paulo,Farmácia,44.86,cancelado
+86,2026-10-28,Belo Horizonte,Restaurante,65.9,em_atraso
+87,2026-10-12,Rio de Janeiro,Restaurante,71.27,entregue
+88,2026-10-13,Rio de Janeiro,Mercado,218.8,em_atraso
+89,2026-10-09,Rio de Janeiro,Farmácia,137.16,entregue
+90,2026-10-27,Curitiba,Mercado,236.02,entregue
+91,2026-10-09,São Paulo,Farmácia,241.38,entregue
+92,2026-10-04,Curitiba,Mercado,99.51,entregue
+93,2026-10-14,Curitiba,Farmácia,46.6,em_atraso
+94,2026-10-07,Rio de Janeiro,Restaurante,183.02,entregue
+95,2026-10-30,Curitiba,Farmácia,185.47,entregue
+96,2026-10-22,São Paulo,Mercado,119.2,em_atraso
+97,2026-10-30,Rio de Janeiro,Farmácia,92.2,cancelado
+98,2026-10-24,Rio de Janeiro,Farmácia,91.14,entregue
+99,2026-10-13,Rio de Janeiro,Farmácia,49.28,entregue
+100,2026-10-31,Belo Horizonte,Farmácia,192.07,entregue
+101,2026-10-19,Rio de Janeiro,Mercado,146.03,entregue
+102,2026-10-10,São Paulo,Mercado,200.72,entregue
+103,2026-10-11,Belo Horizonte,Mercado,121.7,entregue
+104,2026-10-16,São Paulo,Farmácia,39.5,entregue
+105,2026-10-21,Curitiba,Mercado,41.48,em_atraso
+106,2026-10-08,Rio de Janeiro,Restaurante,205.51,entregue
+107,2026-10-02,São Paulo,Mercado,160.59,entregue
+108,2026-10-15,Belo Horizonte,Farmácia,152.4,entregue
+109,2026-10-13,Belo Horizonte,Mercado,76.12,entregue
+110,2026-10-01,Brasília,Mercado,70.33,cancelado
+111,2026-10-23,Curitiba,Mercado,31.55,entregue
+112,2026-10-28,Brasília,Mercado,50.67,entregue
+113,2026-10-17,Curitiba,Farmácia,92.98,entregue
+114,2026-10-15,Curitiba,Farmácia,225.16,entregue
+115,2026-10-30,Curitiba,Mercado,226.36,entregue
+116,2026-10-16,Belo Horizonte,Mercado,192.91,cancelado
+117,2026-10-09,Curitiba,Mercado,164.15,entregue
+118,2026-10-03,Rio de Janeiro,Restaurante,82.49,entregue
+119,2026-10-18,Brasília,Restaurante,54.69,entregue
+120,2026-10-05,São Paulo,Restaurante,115.42,entregue
+121,2026-10-15,Belo Horizonte,Restaurante,67.57,entregue
+122,2026-10-29,Curitiba,Farmácia,24.49,em_atraso
+123,2026-10-19,Belo Horizonte,Mercado,21.36,entregue
+124,2026-10-25,Belo Horizonte,Mercado,143.79,entregue
+125,2026-10-26,Curitiba,Restaurante,132.29,entregue
+126,2026-10-16,Brasília,Mercado,97.31,entregue
+127,2026-10-13,São Paulo,Mercado,231.49,em_atraso
+128,2026-10-18,Brasília,Mercado,156.14,entregue
+129,2026-10-03,Belo Horizonte,Restaurante,219.38,entregue
+130,2026-10-09,Belo Horizonte,Mercado,68.68,entregue
+131,2026-10-25,Belo Horizonte,Mercado,192.96,cancelado
+132,2026-10-09,Brasília,Mercado,24.46,entregue
+133,2026-10-31,Rio de Janeiro,Restaurante,169.53,entregue
+134,2026-10-21,Brasília,Restaurante,238.41,entregue
+135,2026-10-01,Curitiba,Restaurante,74.87,entregue
+136,2026-10-04,Curitiba,Restaurante,126.96,entregue
+137,2026-10-12,São Paulo,Farmácia,159.67,entregue
+138,2026-10-04,São Paulo,Mercado,44.86,entregue
+139,2026-10-10,Curitiba,Farmácia,228.85,entregue
+140,2026-10-31,São Paulo,Restaurante,156.18,cancelado
+141,2026-10-08,Brasília,Farmácia,197.67,cancelado
+142,2026-10-20,Brasília,Farmácia,200.01,entregue
+143,2026-10-14,Rio de Janeiro,Restaurante,136.37,entregue
+144,2026-10-28,Belo Horizonte,Mercado,44.27,em_atraso
+145,2026-10-21,Belo Horizonte,Farmácia,55.19,entregue
+146,2026-10-17,Rio de Janeiro,Farmácia,205.89,entregue
+147,2026-10-16,Belo Horizonte,Mercado,209.92,entregue
+148,2026-10-11,São Paulo,Restaurante,84.15,entregue
+149,2026-10-25,Belo Horizonte,Farmácia,160.38,entregue
+150,2026-10-01,Belo Horizonte,Mercado,61.82,entregue
+151,2026-10-26,Rio de Janeiro,Mercado,84.32,entregue
+152,2026-10-29,Rio de Janeiro,Farmácia,22.33,em_atraso
+153,2026-10-03,São Paulo,Farmácia,113.48,entregue
+154,2026-10-08,Belo Horizonte,Farmácia,183.72,entregue
+155,2026-10-01,Brasília,Mercado,70.97,entregue
+156,2026-10-10,Curitiba,Mercado,128.85,entregue
+157,2026-10-14,Curitiba,Mercado,100.92,entregue
+158,2026-10-10,Rio de Janeiro,Restaurante,47.75,entregue
+159,2026-10-04,Curitiba,Farmácia,62.58,entregue
+160,2026-10-16,Rio de Janeiro,Farmácia,155.6,entregue
+161,2026-10-20,Rio de Janeiro,Restaurante,211.5,entregue
+162,2026-10-12,São Paulo,Mercado,23.25,entregue
+163,2026-10-09,Brasília,Restaurante,147.27,entregue
+164,2026-10-05,Belo Horizonte,Restaurante,220.73,entregue
+165,2026-10-16,Belo Horizonte,Mercado,98.36,em_atraso
+166,2026-10-09,Belo Horizonte,Restaurante,209.09,entregue
+167,2026-10-03,Curitiba,Farmácia,177.88,entregue
+168,2026-10-26,Curitiba,Mercado,39.59,entregue
+169,2026-10-18,Belo Horizonte,Farmácia,157.11,entregue
+170,2026-10-25,Curitiba,Mercado,123.62,entregue
+171,2026-10-28,Curitiba,Mercado,90.24,entregue
+172,2026-10-20,Brasília,Restaurante,163.87,entregue
+173,2026-10-03,São Paulo,Restaurante,59.98,entregue
+174,2026-10-01,Belo Horizonte,Mercado,178.56,entregue
+175,2026-10-02,São Paulo,Mercado,182.6,entregue
+176,2026-10-15,Brasília,Farmácia,73.69,entregue
+177,2026-10-26,Curitiba,Farmácia,204.9,entregue
+178,2026-10-04,Curitiba,Restaurante,168.96,em_atraso
+179,2026-10-27,São Paulo,Restaurante,33.72,entregue
+180,2026-10-20,Curitiba,Mercado,121.01,entregue
+181,2026-10-10,Belo Horizonte,Mercado,135.11,entregue
+182,2026-10-03,Curitiba,Restaurante,224.57,entregue
+183,2026-10-20,Rio de Janeiro,Restaurante,41.01,em_atraso
+184,2026-10-27,Curitiba,Farmácia,238.68,em_atraso
+185,2026-10-22,Rio de Janeiro,Farmácia,29.25,entregue
+186,2026-10-16,Curitiba,Farmácia,121.71,entregue
+187,2026-10-19,Belo Horizonte,Farmácia,207.28,em_atraso
+188,2026-10-16,Rio de Janeiro,Mercado,96.66,entregue
+189,2026-10-28,São Paulo,Mercado,114.68,entregue
+190,2026-10-22,Belo Horizonte,Farmácia,28.44,entregue
+191,2026-10-09,Rio de Janeiro,Restaurante,243.14,entregue
+192,2026-10-17,Brasília,Farmácia,219.95,entregue
+193,2026-10-02,São Paulo,Farmácia,103.21,entregue
+194,2026-10-21,Belo Horizonte,Restaurante,66.82,entregue
+195,2026-10-30,Rio de Janeiro,Mercado,222.59,entregue
+196,2026-10-01,Curitiba,Restaurante,183.25,entregue
+197,2026-10-01,Curitiba,Mercado,41.44,em_atraso
+198,2026-10-30,Brasília,Mercado,237.82,entregue
+199,2026-10-05,Belo Horizonte,Farmácia,87.13,entregue
+200,2026-10-14,Belo Horizonte,Mercado,76.06,entregue
+201,2026-10-13,São Paulo,Farmácia,136.9,cancelado
+202,2026-10-28,Brasília,Mercado,197.72,cancelado
+203,2026-10-11,Curitiba,Mercado,208.73,entregue
+204,2026-10-10,Curitiba,Farmácia,249.75,entregue
+205,2026-10-05,Belo Horizonte,Farmácia,131.4,entregue
+206,2026-10-25,Curitiba,Mercado,124.73,entregue
+207,2026-10-07,São Paulo,Farmácia,108.08,cancelado
+208,2026-10-14,Brasília,Mercado,191.28,entregue
+209,2026-10-26,Belo Horizonte,Mercado,247.34,entregue
+210,2026-10-21,São Paulo,Mercado,241.91,entregue
+211,2026-10-31,Curitiba,Mercado,220.03,cancelado
+212,2026-10-15,Brasília,Farmácia,229.4,entregue
+213,2026-10-05,Belo Horizonte,Farmácia,243.09,entregue
+214,2026-10-26,Rio de Janeiro,Mercado,163.35,entregue
+215,2026-10-03,Rio de Janeiro,Farmácia,217.65,entregue
+216,2026-10-11,Belo Horizonte,Farmácia,28.26,entregue
+217,2026-10-21,Rio de Janeiro,Restaurante,191.76,entregue
+218,2026-10-04,Brasília,Mercado,58.26,entregue
+219,2026-10-01,Brasília,Mercado,203.11,entregue
+220,2026-10-12,Belo Horizonte,Restaurante,76.17,entregue
+221,2026-10-22,São Paulo,Restaurante,60.27,entregue
+222,2026-10-13,Curitiba,Farmácia,75.39,em_atraso
+223,2026-10-05,São Paulo,Mercado,166.72,entregue
+224,2026-10-22,Brasília,Mercado,227.28,entregue
+225,2026-10-06,Brasília,Mercado,237.4,em_atraso
+226,2026-10-10,Belo Horizonte,Farmácia,77.52,cancelado
+227,2026-10-07,Belo Horizonte,Mercado,44.53,entregue
+228,2026-10-12,Curitiba,Mercado,248.32,entregue
+229,2026-10-27,Belo Horizonte,Mercado,21.86,cancelado
+230,2026-10-25,Brasília,Farmácia,191.39,cancelado
+231,2026-10-29,Rio de Janeiro,Restaurante,159.62,entregue
+232,2026-10-21,São Paulo,Farmácia,77.64,entregue
+233,2026-10-25,São Paulo,Farmácia,42.35,entregue
+234,2026-10-02,Rio de Janeiro,Mercado,27.67,entregue
+235,2026-10-05,Brasília,Mercado,95.15,entregue
+236,2026-10-07,São Paulo,Farmácia,221.59,entregue
+237,2026-10-17,Rio de Janeiro,Restaurante,79.1,cancelado
+238,2026-10-16,Rio de Janeiro,Farmácia,220.19,cancelado
+239,2026-10-15,Brasília,Restaurante,193.45,entregue
+240,2026-10-22,Belo Horizonte,Farmácia,104.13,entregue
+241,2026-10-01,Rio de Janeiro,Farmácia,48.43,entregue
+242,2026-10-24,Rio de Janeiro,Farmácia,107.64,entregue
+243,2026-10-12,Brasília,Farmácia,73.78,entregue
+244,2026-10-29,Curitiba,Mercado,230.51,entregue
+245,2026-10-03,Belo Horizonte,Farmácia,89.5,entregue
+246,2026-10-05,Brasília,Restaurante,90.0,entregue
+247,2026-10-04,São Paulo,Farmácia,51.2,entregue
+248,2026-10-22,Curitiba,Mercado,155.09,entregue
+249,2026-10-29,Belo Horizonte,Farmácia,42.77,entregue
+250,2026-10-14,Rio de Janeiro,Restaurante,178.76,entregue
+251,2026-10-15,São Paulo,Mercado,42.85,entregue
+252,2026-10-18,Rio de Janeiro,Restaurante,111.57,entregue
+253,2026-10-04,Belo Horizonte,Restaurante,172.44,entregue
+254,2026-10-20,Brasília,Restaurante,200.96,entregue
+255,2026-10-05,Curitiba,Restaurante,35.78,entregue
+256,2026-10-07,Curitiba,Restaurante,207.0,entregue
+257,2026-10-25,São Paulo,Farmácia,20.65,cancelado
+258,2026-10-05,São Paulo,Farmácia,77.65,entregue
+259,2026-10-22,Brasília,Restaurante,23.42,entregue
+260,2026-10-08,Curitiba,Mercado,23.63,entregue
+261,2026-10-05,Belo Horizonte,Farmácia,46.14,entregue
+262,2026-10-15,Rio de Janeiro,Farmácia,156.54,entregue
+263,2026-10-08,Curitiba,Restaurante,187.27,em_atraso
+264,2026-10-22,Curitiba,Mercado,125.35,em_atraso
+265,2026-10-02,Belo Horizonte,Mercado,118.04,entregue
+266,2026-10-23,Belo Horizonte,Restaurante,226.83,entregue
+267,2026-10-05,Brasília,Restaurante,83.25,entregue
+268,2026-10-18,Rio de Janeiro,Mercado,248.76,entregue
+269,2026-10-15,Curitiba,Farmácia,118.95,entregue
+270,2026-10-04,Curitiba,Farmácia,219.06,entregue
+271,2026-10-29,São Paulo,Mercado,97.95,entregue
+272,2026-10-14,Brasília,Mercado,118.16,entregue
+273,2026-10-12,São Paulo,Farmácia,232.29,entregue
+274,2026-10-27,Brasília,Restaurante,119.33,entregue
+275,2026-10-12,São Paulo,Farmácia,33.8,em_atraso
+276,2026-10-18,Rio de Janeiro,Farmácia,48.11,entregue
+277,2026-10-22,Belo Horizonte,Farmácia,31.83,entregue
+278,2026-10-10,Rio de Janeiro,Restaurante,152.92,entregue
+279,2026-10-22,Belo Horizonte,Restaurante,214.87,entregue
+280,2026-10-18,Rio de Janeiro,Restaurante,195.4,entregue
+281,2026-10-26,Belo Horizonte,Farmácia,244.15,cancelado
+282,2026-10-20,Curitiba,Restaurante,160.07,entregue
+283,2026-10-23,Rio de Janeiro,Restaurante,61.5,entregue
+284,2026-10-10,Rio de Janeiro,Mercado,21.4,cancelado
+285,2026-10-19,Belo Horizonte,Restaurante,52.63,entregue
+286,2026-10-01,Brasília,Farmácia,142.01,entregue
+287,2026-10-15,Rio de Janeiro,Restaurante,105.11,entregue
+288,2026-10-25,Curitiba,Farmácia,39.54,entregue
+289,2026-10-06,Curitiba,Restaurante,175.01,entregue
+290,2026-10-22,Belo Horizonte,Mercado,159.63,entregue
+291,2026-10-07,Curitiba,Restaurante,99.39,entregue
+292,2026-10-22,Curitiba,Mercado,141.19,entregue
+293,2026-10-08,Belo Horizonte,Farmácia,32.6,entregue
+294,2026-10-31,São Paulo,Restaurante,195.76,entregue
+295,2026-10-04,Brasília,Mercado,191.81,entregue
+296,2026-10-13,Curitiba,Farmácia,72.93,entregue
+297,2026-10-22,Rio de Janeiro,Restaurante,111.33,entregue
+298,2026-10-14,Brasília,Mercado,231.87,cancelado
+299,2026-10-19,Belo Horizonte,Farmácia,113.02,entregue
+300,2026-10-10,Brasília,Mercado,24.8,entregue
+301,2026-10-26,Curitiba,Mercado,211.37,em_atraso
+302,2026-10-03,Belo Horizonte,Restaurante,75.96,entregue
+303,2026-10-17,Brasília,Mercado,220.22,entregue
+304,2026-10-08,Rio de Janeiro,Restaurante,37.57,entregue
+305,2026-10-17,Curitiba,Restaurante,228.36,entregue
+306,2026-10-24,São Paulo,Restaurante,43.65,entregue
+307,2026-10-06,Curitiba,Restaurante,194.85,entregue
+308,2026-10-06,Belo Horizonte,Mercado,193.52,entregue
+309,2026-10-15,Curitiba,Farmácia,166.12,entregue
+310,2026-10-28,Rio de Janeiro,Restaurante,121.15,entregue
+311,2026-10-21,Rio de Janeiro,Mercado,156.03,entregue
+312,2026-10-03,Rio de Janeiro,Mercado,123.94,entregue
+313,2026-10-27,Rio de Janeiro,Restaurante,168.27,em_atraso
+314,2026-10-03,Curitiba,Farmácia,136.63,entregue
+315,2026-10-18,Brasília,Mercado,229.08,entregue
+316,2026-10-07,Rio de Janeiro,Farmácia,129.39,entregue
+317,2026-10-02,Belo Horizonte,Restaurante,206.52,cancelado
+318,2026-10-23,Brasília,Farmácia,168.61,entregue
+319,2026-10-23,Belo Horizonte,Mercado,140.54,entregue
+320,2026-10-12,Rio de Janeiro,Mercado,109.11,entregue
+321,2026-10-22,Curitiba,Restaurante,201.52,entregue
+322,2026-10-03,Rio de Janeiro,Restaurante,148.33,entregue
+323,2026-10-09,Curitiba,Restaurante,96.67,entregue
+324,2026-10-05,Rio de Janeiro,Mercado,242.57,entregue
+325,2026-10-13,São Paulo,Farmácia,183.03,entregue
+326,2026-10-18,Belo Horizonte,Farmácia,202.08,cancelado
+327,2026-10-22,Curitiba,Restaurante,168.59,entregue
+328,2026-10-12,Brasília,Mercado,91.04,em_atraso
+329,2026-10-11,Belo Horizonte,Restaurante,72.1,entregue
+330,2026-10-03,Rio de Janeiro,Restaurante,136.77,entregue
+331,2026-10-24,Curitiba,Restaurante,172.24,cancelado
+332,2026-10-20,São Paulo,Farmácia,106.65,entregue
+333,2026-10-27,Curitiba,Restaurante,185.87,entregue
+334,2026-10-12,São Paulo,Mercado,160.44,entregue
+335,2026-10-26,Belo Horizonte,Restaurante,142.82,entregue
+336,2026-10-26,Belo Horizonte,Restaurante,104.6,em_atraso
+337,2026-10-15,Belo Horizonte,Mercado,198.97,entregue
+338,2026-10-14,São Paulo,Restaurante,204.29,entregue
+339,2026-10-09,Brasília,Farmácia,130.54,entregue
+340,2026-10-30,Brasília,Farmácia,214.56,cancelado
+341,2026-10-10,Brasília,Restaurante,82.74,em_atraso
+342,2026-10-05,Belo Horizonte,Restaurante,237.68,entregue
+343,2026-10-15,Rio de Janeiro,Restaurante,115.43,entregue
+344,2026-10-12,São Paulo,Mercado,248.74,entregue
+345,2026-10-01,Rio de Janeiro,Restaurante,213.01,entregue
+346,2026-10-26,São Paulo,Restaurante,28.81,em_atraso
+347,2026-10-16,São Paulo,Farmácia,127.9,entregue
+348,2026-10-29,Brasília,Restaurante,78.86,cancelado
+349,2026-10-18,Curitiba,Farmácia,117.35,entregue
+350,2026-10-08,Rio de Janeiro,Restaurante,30.98,entregue
+351,2026-10-26,Curitiba,Mercado,34.45,cancelado
+352,2026-10-16,Curitiba,Farmácia,23.78,entregue
+353,2026-10-08,São Paulo,Mercado,118.72,entregue
+354,2026-10-08,Curitiba,Mercado,63.08,entregue
+355,2026-10-17,Rio de Janeiro,Restaurante,239.28,entregue
+356,2026-10-26,Curitiba,Farmácia,24.68,cancelado
+357,2026-10-02,Belo Horizonte,Mercado,78.34,entregue
+358,2026-10-26,Brasília,Mercado,75.46,entregue
+359,2026-10-04,Curitiba,Farmácia,194.04,entregue
+360,2026-10-12,Curitiba,Mercado,207.11,entregue
+361,2026-10-25,Belo Horizonte,Farmácia,130.06,entregue
+362,2026-10-05,Brasília,Farmácia,198.52,entregue
+363,2026-10-10,São Paulo,Restaurante,201.96,em_atraso
+364,2026-10-11,Rio de Janeiro,Farmácia,111.59,cancelado
+365,2026-10-16,Rio de Janeiro,Restaurante,193.26,entregue
+366,2026-10-12,Brasília,Farmácia,96.34,entregue
+367,2026-10-12,Belo Horizonte,Mercado,190.96,em_atraso
+368,2026-10-13,Rio de Janeiro,Restaurante,134.13,entregue
+369,2026-10-30,Curitiba,Mercado,204.26,entregue
+370,2026-10-03,Belo Horizonte,Farmácia,248.87,entregue
+371,2026-10-10,Rio de Janeiro,Restaurante,38.42,entregue
+372,2026-10-10,Belo Horizonte,Farmácia,185.06,entregue
+373,2026-10-15,Rio de Janeiro,Mercado,29.74,cancelado
+374,2026-10-12,Curitiba,Mercado,83.15,em_atraso
+375,2026-10-31,Brasília,Restaurante,174.37,entregue
+376,2026-10-17,São Paulo,Restaurante,52.84,entregue
+377,2026-10-26,Belo Horizonte,Restaurante,49.03,entregue
+378,2026-10-21,Rio de Janeiro,Mercado,108.06,entregue
+379,2026-10-20,São Paulo,Farmácia,123.48,entregue
+380,2026-10-15,Brasília,Farmácia,51.67,entregue
+381,2026-10-11,Rio de Janeiro,Restaurante,240.92,entregue
+382,2026-10-06,Belo Horizonte,Farmácia,109.01,entregue
+383,2026-10-09,Rio de Janeiro,Farmácia,122.64,em_atraso
+384,2026-10-10,Belo Horizonte,Restaurante,48.21,cancelado
+385,2026-10-15,São Paulo,Farmácia,122.38,entregue
+386,2026-10-22,Rio de Janeiro,Farmácia,99.91,entregue
+387,2026-10-18,Rio de Janeiro,Mercado,215.81,entregue
+388,2026-10-30,São Paulo,Mercado,137.01,entregue
+389,2026-10-07,São Paulo,Restaurante,201.79,entregue
+390,2026-10-18,Curitiba,Mercado,127.5,em_atraso
+391,2026-10-05,Curitiba,Restaurante,35.12,entregue
+392,2026-10-23,Belo Horizonte,Farmácia,114.48,entregue
+393,2026-10-19,Brasília,Restaurante,243.65,entregue
+394,2026-10-15,Belo Horizonte,Farmácia,138.99,entregue
+395,2026-10-27,Curitiba,Farmácia,155.19,entregue
+396,2026-10-05,Belo Horizonte,Farmácia,229.46,entregue
+397,2026-10-04,Curitiba,Restaurante,89.95,entregue
+398,2026-10-30,São Paulo,Mercado,237.92,entregue
+399,2026-10-10,Brasília,Mercado,65.15,em_atraso
+400,2026-10-09,São Paulo,Farmácia,89.65,entregue
+401,2026-10-17,São Paulo,Farmácia,236.57,entregue
+402,2026-10-22,Curitiba,Farmácia,227.46,entregue
+403,2026-10-30,Curitiba,Restaurante,209.8,entregue
+404,2026-10-02,Curitiba,Mercado,169.76,entregue
+405,2026-10-14,Curitiba,Farmácia,26.97,em_atraso
+406,2026-10-18,Rio de Janeiro,Farmácia,240.03,entregue
+407,2026-10-26,Belo Horizonte,Mercado,124.32,entregue
+408,2026-10-06,Belo Horizonte,Mercado,131.38,entregue
+409,2026-10-20,São Paulo,Mercado,218.14,entregue
+410,2026-10-28,Rio de Janeiro,Mercado,50.08,entregue
+411,2026-10-18,Brasília,Mercado,75.6,entregue
+412,2026-10-15,São Paulo,Restaurante,42.27,entregue
+413,2026-10-13,Curitiba,Mercado,77.1,cancelado
+414,2026-10-06,Rio de Janeiro,Farmácia,185.86,entregue
+415,2026-10-06,Belo Horizonte,Farmácia,127.37,cancelado
+416,2026-10-16,Brasília,Restaurante,237.4,entregue
+417,2026-10-31,São Paulo,Restaurante,154.17,entregue
+418,2026-10-10,Belo Horizonte,Farmácia,222.94,entregue
+419,2026-10-16,Rio de Janeiro,Farmácia,21.88,entregue
+420,2026-10-05,Rio de Janeiro,Farmácia,104.13,entregue
+421,2026-10-02,Belo Horizonte,Restaurante,151.16,entregue
+422,2026-10-18,Rio de Janeiro,Restaurante,108.86,entregue
+423,2026-10-18,Rio de Janeiro,Farmácia,176.49,entregue
+424,2026-10-04,Belo Horizonte,Mercado,202.83,entregue
+425,2026-10-31,Rio de Janeiro,Restaurante,65.78,entregue
+426,2026-10-17,Brasília,Restaurante,28.95,entregue
+427,2026-10-26,Belo Horizonte,Farmácia,125.11,entregue
+428,2026-10-17,São Paulo,Mercado,234.21,entregue
+429,2026-10-13,Curitiba,Farmácia,213.8,entregue
+430,2026-10-17,Curitiba,Farmácia,132.66,entregue
+431,2026-10-16,Brasília,Mercado,96.19,entregue
+432,2026-10-14,Curitiba,Mercado,203.25,entregue
+433,2026-10-23,Brasília,Farmácia,129.16,em_atraso
+434,2026-10-26,Curitiba,Farmácia,72.33,entregue
+435,2026-10-16,São Paulo,Farmácia,164.68,entregue
+436,2026-10-27,Belo Horizonte,Restaurante,208.98,entregue
+437,2026-10-19,Brasília,Restaurante,24.36,entregue
+438,2026-10-05,Belo Horizonte,Farmácia,66.9,entregue
+439,2026-10-20,Belo Horizonte,Farmácia,187.3,entregue
+440,2026-10-17,São Paulo,Farmácia,94.76,entregue
+441,2026-10-17,Belo Horizonte,Mercado,240.04,entregue
+442,2026-10-18,Rio de Janeiro,Farmácia,101.49,entregue
+443,2026-10-24,Rio de Janeiro,Farmácia,131.36,em_atraso
+444,2026-10-09,Curitiba,Mercado,71.72,em_atraso
+445,2026-10-10,Rio de Janeiro,Farmácia,67.67,entregue
+446,2026-10-11,Belo Horizonte,Mercado,148.91,em_atraso
+447,2026-10-24,Rio de Janeiro,Mercado,48.03,entregue
+448,2026-10-13,Belo Horizonte,Mercado,239.56,cancelado
+449,2026-10-10,Brasília,Mercado,239.72,entregue
+450,2026-10-30,Belo Horizonte,Farmácia,78.98,entregue
+451,2026-10-07,Curitiba,Mercado,234.6,entregue
+452,2026-10-05,Brasília,Farmácia,190.4,entregue
+453,2026-10-02,Curitiba,Restaurante,166.73,entregue
+454,2026-10-14,Rio de Janeiro,Farmácia,128.65,entregue
+455,2026-10-05,Brasília,Farmácia,244.92,entregue
+456,2026-10-21,Belo Horizonte,Mercado,169.62,entregue
+457,2026-10-10,Rio de Janeiro,Mercado,168.56,em_atraso
+458,2026-10-03,Curitiba,Restaurante,143.09,entregue
+459,2026-10-30,Brasília,Restaurante,116.11,cancelado
+460,2026-10-30,Brasília,Mercado,201.23,entregue
+461,2026-10-24,Rio de Janeiro,Restaurante,22.13,entregue
+462,2026-10-04,Rio de Janeiro,Mercado,124.5,entregue
+463,2026-10-17,Belo Horizonte,Restaurante,215.74,entregue
+464,2026-10-07,Brasília,Mercado,57.37,entregue
+465,2026-10-09,São Paulo,Restaurante,189.42,entregue
+466,2026-10-19,São Paulo,Restaurante,160.52,entregue
+467,2026-10-13,Belo Horizonte,Farmácia,95.42,entregue
+468,2026-10-04,São Paulo,Restaurante,129.81,em_atraso
+469,2026-10-01,Rio de Janeiro,Mercado,74.17,entregue
+470,2026-10-31,Rio de Janeiro,Mercado,153.97,entregue
+471,2026-10-09,Rio de Janeiro,Farmácia,74.35,entregue
+472,2026-10-15,Rio de Janeiro,Restaurante,113.25,entregue
+473,2026-10-29,Rio de Janeiro,Farmácia,47.01,em_atraso
+474,2026-10-10,Rio de Janeiro,Farmácia,70.8,em_atraso
+475,2026-10-16,São Paulo,Mercado,191.98,entregue
+476,2026-10-14,Curitiba,Mercado,194.19,cancelado
+477,2026-10-27,São Paulo,Restaurante,176.48,entregue
+478,2026-10-26,Brasília,Farmácia,122.75,entregue
+479,2026-10-03,Curitiba,Restaurante,34.2,entregue
+480,2026-10-17,São Paulo,Farmácia,143.43,entregue
+481,2026-10-28,Curitiba,Mercado,46.74,entregue
+482,2026-10-19,Belo Horizonte,Restaurante,226.74,entregue
+483,2026-10-02,Belo Horizonte,Restaurante,138.05,entregue
+484,2026-10-02,Curitiba,Mercado,174.74,entregue
+485,2026-10-01,Belo Horizonte,Mercado,207.78,entregue
+486,2026-10-19,Brasília,Restaurante,117.45,entregue
+487,2026-10-18,Brasília,Restaurante,246.81,entregue
+488,2026-10-10,Belo Horizonte,Restaurante,196.86,entregue
+489,2026-10-24,Belo Horizonte,Mercado,248.36,entregue
+490,2026-10-28,Belo Horizonte,Mercado,38.46,em_atraso
+491,2026-10-28,Curitiba,Restaurante,170.31,entregue
+492,2026-10-06,Curitiba,Mercado,141.63,entregue
+493,2026-10-08,Brasília,Restaurante,245.05,entregue
+494,2026-10-24,Curitiba,Mercado,142.34,cancelado
+495,2026-10-08,Belo Horizonte,Mercado,55.68,entregue
+496,2026-10-29,Brasília,Restaurante,206.18,entregue
+497,2026-10-25,Brasília,Restaurante,67.4,entregue
+498,2026-10-02,Belo Horizonte,Farmácia,174.57,cancelado
+499,2026-10-08,Brasília,Mercado,120.96,entregue
+500,2026-10-25,Brasília,Restaurante,135.9,entregue
+501,2026-10-27,Curitiba,Mercado,152.82,entregue
+502,2026-10-27,Rio de Janeiro,Restaurante,89.41,entregue
+503,2026-10-22,Curitiba,Restaurante,115.12,entregue
+504,2026-10-18,Curitiba,Farmácia,229.66,entregue
+505,2026-10-14,Curitiba,Mercado,30.78,entregue
+506,2026-10-21,Belo Horizonte,Farmácia,93.31,entregue
+507,2026-10-05,Rio de Janeiro,Mercado,62.29,entregue
+508,2026-10-08,São Paulo,Mercado,217.23,entregue
+509,2026-10-15,Brasília,Farmácia,114.92,entregue
+510,2026-10-17,São Paulo,Mercado,75.86,entregue
+511,2026-10-21,Brasília,Mercado,214.84,entregue
+512,2026-10-24,São Paulo,Restaurante,81.75,entregue
+513,2026-10-20,Brasília,Restaurante,63.28,entregue
+514,2026-10-24,Curitiba,Restaurante,130.26,cancelado
+515,2026-10-11,Rio de Janeiro,Restaurante,68.72,entregue
+516,2026-10-24,Brasília,Farmácia,249.9,entregue
+517,2026-10-08,Curitiba,Farmácia,67.04,em_atraso
+518,2026-10-18,Rio de Janeiro,Mercado,107.55,entregue
+519,2026-10-12,Rio de Janeiro,Mercado,102.72,em_atraso
+520,2026-10-15,Brasília,Farmácia,127.98,cancelado
+521,2026-10-30,São Paulo,Mercado,91.97,entregue
+522,2026-10-28,São Paulo,Farmácia,53.56,entregue
+523,2026-10-30,Curitiba,Farmácia,185.6,entregue
+524,2026-10-07,Rio de Janeiro,Restaurante,107.36,cancelado
+525,2026-10-16,Curitiba,Farmácia,237.0,entregue
+526,2026-10-25,Belo Horizonte,Farmácia,167.59,entregue
+527,2026-10-06,Rio de Janeiro,Restaurante,52.19,entregue
+528,2026-10-06,Curitiba,Farmácia,240.16,entregue
+529,2026-10-27,Brasília,Farmácia,31.16,entregue
+530,2026-10-05,São Paulo,Restaurante,182.65,entregue
+531,2026-10-17,Belo Horizonte,Mercado,33.9,entregue
+532,2026-10-30,Curitiba,Mercado,171.64,entregue
+533,2026-10-18,Curitiba,Mercado,22.73,entregue
+534,2026-10-09,Curitiba,Mercado,23.94,cancelado
+535,2026-10-22,Belo Horizonte,Restaurante,44.61,entregue
+536,2026-10-05,São Paulo,Restaurante,162.55,entregue
+537,2026-10-12,Rio de Janeiro,Mercado,38.17,em_atraso
+538,2026-10-15,Curitiba,Restaurante,247.75,entregue
+539,2026-10-22,Brasília,Farmácia,248.09,entregue
+540,2026-10-02,Brasília,Mercado,107.23,entregue
+541,2026-10-02,Brasília,Farmácia,59.42,entregue
+542,2026-10-14,Rio de Janeiro,Farmácia,244.79,em_atraso
+543,2026-10-29,Curitiba,Restaurante,72.85,em_atraso
+544,2026-10-23,Curitiba,Mercado,82.35,em_atraso
+545,2026-10-22,Rio de Janeiro,Farmácia,149.61,entregue
+546,2026-10-30,Rio de Janeiro,Restaurante,241.14,entregue
+547,2026-10-25,Belo Horizonte,Restaurante,88.83,entregue
+548,2026-10-19,Belo Horizonte,Farmácia,226.2,entregue
+549,2026-10-25,São Paulo,Farmácia,186.56,entregue
+550,2026-10-12,Brasília,Restaurante,120.53,cancelado
+551,2026-10-11,Curitiba,Farmácia,239.62,entregue
+552,2026-10-25,Rio de Janeiro,Restaurante,165.85,entregue
+553,2026-10-15,Belo Horizonte,Restaurante,101.84,em_atraso
+554,2026-10-14,São Paulo,Farmácia,154.75,entregue
+555,2026-10-25,Curitiba,Mercado,203.55,entregue
+556,2026-10-03,Rio de Janeiro,Restaurante,107.4,entregue
+557,2026-10-05,Belo Horizonte,Mercado,102.96,entregue
+558,2026-10-31,Rio de Janeiro,Mercado,102.78,entregue
+559,2026-10-05,Brasília,Restaurante,119.13,entregue
+560,2026-10-17,Belo Horizonte,Restaurante,26.04,entregue
+561,2026-10-03,Curitiba,Farmácia,200.42,cancelado
+562,2026-10-01,Rio de Janeiro,Mercado,109.19,entregue
+563,2026-10-29,Curitiba,Restaurante,151.55,entregue
+564,2026-10-13,São Paulo,Restaurante,81.85,entregue
+565,2026-10-05,Brasília,Restaurante,119.98,entregue
+566,2026-10-16,Brasília,Mercado,77.89,entregue
+567,2026-10-21,Belo Horizonte,Farmácia,161.83,entregue
+568,2026-10-05,Rio de Janeiro,Restaurante,238.23,entregue
+569,2026-10-20,Belo Horizonte,Mercado,121.25,entregue
+570,2026-10-27,Curitiba,Restaurante,89.1,entregue
+571,2026-10-23,São Paulo,Mercado,92.26,em_atraso
+572,2026-10-31,Rio de Janeiro,Mercado,189.02,entregue
+573,2026-10-31,Curitiba,Restaurante,94.95,entregue
+574,2026-10-26,Belo Horizonte,Mercado,46.19,entregue
+575,2026-10-19,Curitiba,Restaurante,176.79,entregue
+576,2026-10-31,Belo Horizonte,Farmácia,68.22,entregue
+577,2026-10-27,Brasília,Mercado,174.78,entregue
+578,2026-10-10,São Paulo,Mercado,171.49,entregue
+579,2026-10-26,Belo Horizonte,Restaurante,123.29,entregue
+580,2026-10-19,Belo Horizonte,Farmácia,136.52,em_atraso
+581,2026-10-23,Belo Horizonte,Farmácia,28.46,em_atraso
+582,2026-10-23,Curitiba,Farmácia,166.78,entregue
+583,2026-10-25,São Paulo,Farmácia,172.88,entregue
+584,2026-10-20,Brasília,Farmácia,246.23,entregue
+585,2026-10-13,Rio de Janeiro,Mercado,44.37,entregue
+586,2026-10-08,Curitiba,Farmácia,139.32,entregue
+587,2026-10-19,São Paulo,Mercado,106.05,entregue
+588,2026-10-22,Curitiba,Farmácia,135.11,entregue
+589,2026-10-01,Belo Horizonte,Restaurante,87.95,em_atraso
+590,2026-10-03,Brasília,Farmácia,52.59,entregue
+591,2026-10-15,São Paulo,Farmácia,131.07,entregue
+592,2026-10-15,Belo Horizonte,Mercado,35.45,entregue
+593,2026-10-23,Brasília,Restaurante,215.31,entregue
+594,2026-10-22,São Paulo,Farmácia,76.1,entregue
+595,2026-10-06,Rio de Janeiro,Farmácia,118.06,entregue
+596,2026-10-26,Belo Horizonte,Farmácia,62.42,entregue
+597,2026-10-14,Belo Horizonte,Restaurante,189.6,em_atraso
+598,2026-10-15,Curitiba,Mercado,109.43,entregue
+599,2026-10-07,Rio de Janeiro,Farmácia,206.01,entregue
+600,2026-10-04,Curitiba,Restaurante,104.13,entregue
+601,2026-10-04,Rio de Janeiro,Farmácia,218.41,entregue
+602,2026-10-21,Rio de Janeiro,Farmácia,109.39,entregue
+603,2026-10-04,Rio de Janeiro,Mercado,214.47,entregue
+604,2026-10-27,Rio de Janeiro,Farmácia,155.74,entregue
+605,2026-10-11,Brasília,Restaurante,90.24,entregue
+606,2026-10-23,São Paulo,Farmácia,109.35,entregue
+607,2026-10-19,Belo Horizonte,Mercado,62.72,entregue
+608,2026-10-23,São Paulo,Farmácia,58.38,entregue
+609,2026-10-06,Rio de Janeiro,Mercado,162.46,cancelado
+610,2026-10-31,Brasília,Mercado,51.4,cancelado
+611,2026-10-31,Curitiba,Farmácia,170.21,entregue
+612,2026-10-16,Belo Horizonte,Farmácia,213.18,entregue
+613,2026-10-03,Curitiba,Restaurante,203.05,entregue
+614,2026-10-02,Rio de Janeiro,Restaurante,143.65,entregue
+615,2026-10-15,Curitiba,Farmácia,197.69,entregue
+616,2026-10-17,Brasília,Farmácia,46.27,entregue
+617,2026-10-27,Rio de Janeiro,Farmácia,209.2,entregue
+618,2026-10-24,Belo Horizonte,Farmácia,70.26,entregue
+619,2026-10-24,São Paulo,Mercado,221.21,entregue
+620,2026-10-09,Rio de Janeiro,Restaurante,120.99,em_atraso
+621,2026-10-25,São Paulo,Restaurante,206.46,entregue
+622,2026-10-12,Curitiba,Farmácia,118.48,entregue
+623,2026-10-26,São Paulo,Restaurante,205.25,entregue
+624,2026-10-18,Rio de Janeiro,Farmácia,143.92,entregue
+625,2026-10-23,Rio de Janeiro,Mercado,151.73,em_atraso
+626,2026-10-17,Brasília,Restaurante,241.44,entregue
+627,2026-10-30,Brasília,Mercado,219.42,entregue
+628,2026-10-28,São Paulo,Restaurante,53.64,entregue
+629,2026-10-08,Belo Horizonte,Mercado,52.7,entregue
+630,2026-10-21,Belo Horizonte,Mercado,123.96,entregue
+631,2026-10-29,Brasília,Mercado,138.59,entregue
+632,2026-10-30,Rio de Janeiro,Mercado,238.56,entregue
+633,2026-10-01,Brasília,Farmácia,243.59,entregue
+634,2026-10-23,Rio de Janeiro,Restaurante,203.01,entregue
+635,2026-10-31,Belo Horizonte,Restaurante,133.78,entregue
+636,2026-10-10,Rio de Janeiro,Farmácia,152.92,entregue
+637,2026-10-16,Rio de Janeiro,Farmácia,195.32,entregue
+638,2026-10-21,Belo Horizonte,Restaurante,48.57,cancelado
+639,2026-10-15,Belo Horizonte,Restaurante,248.12,entregue
+640,2026-10-23,São Paulo,Farmácia,89.43,cancelado
+641,2026-10-29,Rio de Janeiro,Restaurante,170.56,entregue
+642,2026-10-12,São Paulo,Restaurante,111.16,entregue
+643,2026-10-23,São Paulo,Mercado,170.76,entregue
+644,2026-10-01,São Paulo,Mercado,37.93,entregue
+645,2026-10-17,Belo Horizonte,Restaurante,21.85,entregue
+646,2026-10-04,Belo Horizonte,Farmácia,50.4,entregue
+647,2026-10-13,Brasília,Farmácia,205.37,entregue
+648,2026-10-12,Rio de Janeiro,Restaurante,108.03,cancelado
+649,2026-10-28,São Paulo,Farmácia,248.38,entregue
+650,2026-10-17,Curitiba,Restaurante,160.37,entregue
+651,2026-10-12,São Paulo,Farmácia,192.1,em_atraso
+652,2026-10-20,Belo Horizonte,Restaurante,39.94,entregue
+653,2026-10-25,Brasília,Farmácia,187.9,entregue
+654,2026-10-14,Rio de Janeiro,Restaurante,76.99,entregue
+655,2026-10-08,Curitiba,Farmácia,158.0,entregue
+656,2026-10-25,Brasília,Farmácia,221.44,entregue
+657,2026-10-20,Curitiba,Restaurante,192.0,entregue
+658,2026-10-02,São Paulo,Mercado,108.75,entregue
+659,2026-10-21,Curitiba,Restaurante,141.51,em_atraso
+660,2026-10-12,Rio de Janeiro,Restaurante,108.97,cancelado
+661,2026-10-14,Rio de Janeiro,Farmácia,177.08,entregue
+662,2026-10-31,Brasília,Restaurante,155.09,entregue
+663,2026-10-07,Brasília,Restaurante,238.2,entregue
+664,2026-10-10,Curitiba,Mercado,117.42,entregue
+665,2026-10-21,Curitiba,Farmácia,161.69,entregue
+666,2026-10-10,Brasília,Farmácia,231.81,em_atraso
+667,2026-10-05,Curitiba,Mercado,109.87,entregue
+668,2026-10-27,Brasília,Mercado,180.7,entregue
+669,2026-10-28,São Paulo,Restaurante,76.23,em_atraso
+670,2026-10-04,Belo Horizonte,Farmácia,160.03,entregue
+671,2026-10-24,São Paulo,Restaurante,22.91,entregue
+672,2026-10-01,São Paulo,Mercado,239.19,entregue
+673,2026-10-26,Rio de Janeiro,Restaurante,105.53,entregue
+674,2026-10-28,Rio de Janeiro,Farmácia,223.88,entregue
+675,2026-10-01,Rio de Janeiro,Mercado,82.56,entregue
+676,2026-10-23,Curitiba,Farmácia,37.73,entregue
+677,2026-10-12,Brasília,Mercado,217.65,entregue
+678,2026-10-06,Rio de Janeiro,Restaurante,225.68,entregue
+679,2026-10-04,São Paulo,Farmácia,137.03,entregue
+680,2026-10-28,Brasília,Restaurante,30.58,entregue
+681,2026-10-30,São Paulo,Restaurante,234.17,cancelado
+682,2026-10-18,Belo Horizonte,Restaurante,94.01,entregue
+683,2026-10-24,Rio de Janeiro,Mercado,209.98,entregue
+684,2026-10-04,Curitiba,Farmácia,227.45,entregue
+685,2026-10-26,Curitiba,Restaurante,239.44,entregue
+686,2026-10-15,Rio de Janeiro,Mercado,95.28,entregue
+687,2026-10-01,Rio de Janeiro,Restaurante,87.07,entregue
+688,2026-10-24,Curitiba,Restaurante,126.7,entregue
+689,2026-10-16,São Paulo,Farmácia,227.1,entregue
+690,2026-10-08,São Paulo,Restaurante,234.45,entregue
+691,2026-10-18,Rio de Janeiro,Farmácia,213.1,cancelado
+692,2026-10-31,Rio de Janeiro,Restaurante,194.55,entregue
+693,2026-10-24,Rio de Janeiro,Restaurante,67.19,em_atraso
+694,2026-10-14,Belo Horizonte,Restaurante,243.69,entregue
+695,2026-10-09,Brasília,Restaurante,231.89,em_atraso
+696,2026-10-17,Belo Horizonte,Farmácia,225.98,entregue
+697,2026-10-24,Brasília,Farmácia,41.98,entregue
+698,2026-10-27,Belo Horizonte,Restaurante,156.14,entregue
+699,2026-10-22,São Paulo,Restaurante,87.09,cancelado
+700,2026-10-30,Belo Horizonte,Farmácia,211.34,entregue
+701,2026-10-15,Rio de Janeiro,Restaurante,37.18,entregue
+702,2026-10-25,Curitiba,Restaurante,55.74,entregue
+703,2026-10-15,Rio de Janeiro,Mercado,47.77,entregue
+704,2026-10-25,São Paulo,Mercado,90.91,entregue
+705,2026-10-04,Brasília,Restaurante,205.75,entregue
+706,2026-10-23,Curitiba,Restaurante,69.45,cancelado
+707,2026-10-05,Brasília,Farmácia,77.09,entregue
+708,2026-10-17,Brasília,Farmácia,88.73,cancelado
+709,2026-10-06,Brasília,Mercado,216.56,entregue
+710,2026-10-18,São Paulo,Restaurante,126.27,cancelado
+711,2026-10-05,Brasília,Restaurante,34.18,entregue
+712,2026-10-08,São Paulo,Restaurante,209.44,entregue
+713,2026-10-21,Brasília,Farmácia,154.81,em_atraso
+714,2026-10-03,Brasília,Restaurante,65.48,entregue
+715,2026-10-26,São Paulo,Restaurante,228.17,cancelado
+716,2026-10-11,Brasília,Restaurante,236.72,entregue
+717,2026-10-30,Curitiba,Mercado,208.99,entregue
+718,2026-10-01,Belo Horizonte,Farmácia,118.13,entregue
+719,2026-10-30,São Paulo,Mercado,84.37,em_atraso
+720,2026-10-02,Curitiba,Farmácia,161.9,entregue
+721,2026-10-16,Belo Horizonte,Farmácia,130.18,entregue
+722,2026-10-13,São Paulo,Mercado,65.88,em_atraso
+723,2026-10-17,São Paulo,Farmácia,248.64,entregue
+724,2026-10-01,Belo Horizonte,Farmácia,102.6,entregue
+725,2026-10-16,Rio de Janeiro,Farmácia,135.55,entregue
+726,2026-10-06,Brasília,Mercado,157.34,entregue
+727,2026-10-26,Rio de Janeiro,Restaurante,205.99,entregue
+728,2026-10-12,Curitiba,Restaurante,244.02,entregue
+729,2026-10-22,São Paulo,Mercado,142.75,entregue
+730,2026-10-24,Brasília,Restaurante,152.41,em_atraso
+731,2026-10-13,Rio de Janeiro,Restaurante,60.5,entregue
+732,2026-10-26,Rio de Janeiro,Farmácia,26.49,entregue
+733,2026-10-31,Curitiba,Farmácia,52.68,em_atraso
+734,2026-10-27,Belo Horizonte,Farmácia,91.08,entregue
+735,2026-10-03,Brasília,Restaurante,158.38,entregue
+736,2026-10-16,Brasília,Mercado,231.12,entregue
+737,2026-10-05,Rio de Janeiro,Farmácia,60.82,cancelado
+738,2026-10-28,Rio de Janeiro,Restaurante,25.04,entregue
+739,2026-10-30,São Paulo,Restaurante,214.69,cancelado
+740,2026-10-31,Brasília,Mercado,182.04,entregue
+741,2026-10-19,Brasília,Mercado,89.41,entregue
+742,2026-10-06,Belo Horizonte,Farmácia,240.95,entregue
+743,2026-10-06,Curitiba,Farmácia,224.61,entregue
+744,2026-10-12,São Paulo,Farmácia,155.46,entregue
+745,2026-10-10,Rio de Janeiro,Restaurante,60.87,entregue
+746,2026-10-23,Curitiba,Mercado,215.67,entregue
+747,2026-10-19,Brasília,Restaurante,158.55,em_atraso
+748,2026-10-31,Curitiba,Restaurante,167.12,entregue
+749,2026-10-16,São Paulo,Mercado,191.43,entregue
+750,2026-10-11,São Paulo,Farmácia,223.62,entregue
+751,2026-10-23,Rio de Janeiro,Mercado,22.62,entregue
+752,2026-10-23,Brasília,Mercado,79.03,entregue
+753,2026-10-01,Brasília,Mercado,120.79,entregue
+754,2026-10-06,Belo Horizonte,Mercado,222.81,entregue
+755,2026-10-13,Brasília,Mercado,201.41,entregue
+756,2026-10-25,São Paulo,Restaurante,123.8,entregue
+757,2026-10-02,Rio de Janeiro,Restaurante,93.3,em_atraso
+758,2026-10-03,Rio de Janeiro,Restaurante,224.22,entregue
+759,2026-10-03,Curitiba,Restaurante,97.73,em_atraso
+760,2026-10-29,Belo Horizonte,Farmácia,27.13,em_atraso
+761,2026-10-06,Curitiba,Mercado,56.13,entregue
+762,2026-10-07,São Paulo,Mercado,180.36,entregue
+763,2026-10-24,Curitiba,Mercado,171.94,entregue
+764,2026-10-04,Brasília,Mercado,151.51,cancelado
+765,2026-10-05,Brasília,Mercado,20.88,entregue
+766,2026-10-27,Curitiba,Mercado,65.93,entregue
+767,2026-10-06,Rio de Janeiro,Restaurante,128.92,entregue
+768,2026-10-26,Belo Horizonte,Mercado,132.49,entregue
+769,2026-10-03,Curitiba,Mercado,62.52,em_atraso
+770,2026-10-12,São Paulo,Mercado,30.26,entregue
+771,2026-10-09,São Paulo,Mercado,149.78,entregue
+772,2026-10-23,Brasília,Restaurante,173.67,cancelado
+773,2026-10-14,Curitiba,Restaurante,147.33,cancelado
+774,2026-10-27,Curitiba,Mercado,242.09,entregue
+775,2026-10-30,Belo Horizonte,Farmácia,222.78,entregue
+776,2026-10-03,Belo Horizonte,Farmácia,27.99,entregue
+777,2026-10-17,Curitiba,Farmácia,246.03,entregue
+778,2026-10-31,Belo Horizonte,Restaurante,238.28,entregue
+779,2026-10-07,São Paulo,Restaurante,29.82,entregue
+780,2026-10-22,Belo Horizonte,Restaurante,249.37,entregue
+781,2026-10-27,Curitiba,Mercado,93.54,entregue
+782,2026-10-26,Brasília,Restaurante,109.26,entregue
+783,2026-10-11,Rio de Janeiro,Farmácia,125.38,cancelado
+784,2026-10-26,Curitiba,Farmácia,140.19,entregue
+785,2026-10-14,São Paulo,Restaurante,150.32,entregue
+786,2026-10-31,Brasília,Restaurante,149.42,entregue
+787,2026-10-10,Curitiba,Mercado,221.92,entregue
+788,2026-10-21,Belo Horizonte,Farmácia,160.06,entregue
+789,2026-10-09,Belo Horizonte,Restaurante,162.2,entregue
+790,2026-10-13,Brasília,Mercado,224.6,entregue
+791,2026-10-08,Brasília,Farmácia,129.3,entregue
+792,2026-10-12,Brasília,Mercado,208.0,entregue
+793,2026-10-09,Belo Horizonte,Farmácia,177.52,em_atraso
+794,2026-10-08,São Paulo,Mercado,244.07,entregue
+795,2026-10-27,Rio de Janeiro,Mercado,187.62,entregue
+796,2026-10-03,São Paulo,Mercado,68.62,cancelado
+797,2026-10-24,Belo Horizonte,Farmácia,219.45,cancelado
+798,2026-10-17,São Paulo,Restaurante,91.56,entregue
+799,2026-10-05,Curitiba,Farmácia,26.66,entregue
+800,2026-10-27,São Paulo,Restaurante,77.38,entregue
+801,2026-10-30,Rio de Janeiro,Farmácia,65.8,entregue
+802,2026-10-15,Curitiba,Mercado,166.14,entregue
+803,2026-10-01,São Paulo,Mercado,132.42,entregue
+804,2026-10-31,Belo Horizonte,Farmácia,146.81,entregue
+805,2026-10-27,Rio de Janeiro,Farmácia,211.1,entregue
+806,2026-10-01,Belo Horizonte,Restaurante,57.47,entregue
+807,2026-10-31,São Paulo,Restaurante,168.9,entregue
+808,2026-10-09,Belo Horizonte,Farmácia,24.61,entregue
+809,2026-10-25,Brasília,Mercado,229.65,entregue
+810,2026-10-20,Brasília,Restaurante,78.05,cancelado
+811,2026-10-10,Rio de Janeiro,Mercado,225.96,cancelado
+812,2026-10-15,Rio de Janeiro,Restaurante,127.34,entregue
+813,2026-10-27,Curitiba,Mercado,154.43,entregue
+814,2026-10-22,Rio de Janeiro,Farmácia,168.89,entregue
+815,2026-10-10,Brasília,Mercado,34.68,em_atraso
+816,2026-10-21,Rio de Janeiro,Mercado,80.06,entregue
+817,2026-10-29,Rio de Janeiro,Restaurante,54.48,entregue
+818,2026-10-29,Brasília,Farmácia,112.94,entregue
+819,2026-10-05,Brasília,Farmácia,134.4,entregue
+820,2026-10-30,Belo Horizonte,Mercado,109.3,entregue
+821,2026-10-23,Curitiba,Restaurante,98.93,entregue
+822,2026-10-22,Curitiba,Farmácia,200.53,em_atraso
+823,2026-10-22,Rio de Janeiro,Farmácia,89.04,entregue
+824,2026-10-22,Curitiba,Restaurante,87.57,entregue
+825,2026-10-24,Rio de Janeiro,Farmácia,205.92,entregue
+826,2026-10-06,Rio de Janeiro,Farmácia,40.54,entregue
+827,2026-10-24,Rio de Janeiro,Mercado,201.26,entregue
+828,2026-10-09,Curitiba,Mercado,126.66,entregue
+829,2026-10-02,Curitiba,Farmácia,237.19,entregue
+830,2026-10-29,São Paulo,Farmácia,47.56,entregue
+831,2026-10-17,Rio de Janeiro,Mercado,32.43,cancelado
+832,2026-10-05,São Paulo,Mercado,114.11,entregue
+833,2026-10-30,Belo Horizonte,Restaurante,92.77,entregue
+834,2026-10-25,Brasília,Mercado,96.5,em_atraso
+835,2026-10-11,Brasília,Restaurante,123.97,entregue
+836,2026-10-25,São Paulo,Farmácia,195.83,entregue
+837,2026-10-25,Brasília,Restaurante,161.33,entregue
+838,2026-10-13,Belo Horizonte,Mercado,108.16,entregue
+839,2026-10-07,Rio de Janeiro,Restaurante,225.16,entregue
+840,2026-10-17,São Paulo,Restaurante,175.65,entregue
+841,2026-10-08,São Paulo,Farmácia,221.71,entregue
+842,2026-10-04,Belo Horizonte,Farmácia,155.39,entregue
+843,2026-10-27,Brasília,Mercado,238.15,entregue
+844,2026-10-17,Curitiba,Farmácia,97.7,em_atraso
+845,2026-10-05,Rio de Janeiro,Mercado,102.63,entregue
+846,2026-10-31,Belo Horizonte,Restaurante,72.54,entregue
+847,2026-10-05,São Paulo,Farmácia,25.04,entregue
+848,2026-10-04,Rio de Janeiro,Farmácia,169.62,entregue
+849,2026-10-29,Rio de Janeiro,Farmácia,163.32,entregue
+850,2026-10-02,Brasília,Farmácia,212.31,entregue
+851,2026-10-04,Belo Horizonte,Mercado,107.46,entregue
+852,2026-10-16,São Paulo,Restaurante,179.89,entregue
+853,2026-10-10,Belo Horizonte,Farmácia,43.23,entregue
+854,2026-10-20,Curitiba,Farmácia,51.55,cancelado
+855,2026-10-04,Curitiba,Farmácia,162.07,entregue
+856,2026-10-26,Brasília,Mercado,65.69,entregue
+857,2026-10-09,Curitiba,Restaurante,102.32,entregue
+858,2026-10-06,Brasília,Farmácia,134.16,entregue
+859,2026-10-30,Belo Horizonte,Mercado,73.94,entregue
+860,2026-10-03,Brasília,Farmácia,173.88,entregue
+861,2026-10-03,Curitiba,Restaurante,186.42,entregue
+862,2026-10-09,São Paulo,Mercado,247.39,entregue
+863,2026-10-15,Brasília,Restaurante,207.03,cancelado
+864,2026-10-28,Rio de Janeiro,Mercado,204.37,entregue
+865,2026-10-24,Brasília,Restaurante,215.79,em_atraso
+866,2026-10-01,São Paulo,Farmácia,168.86,entregue
+867,2026-10-29,Belo Horizonte,Farmácia,81.71,entregue
+868,2026-10-12,Rio de Janeiro,Restaurante,46.18,entregue
+869,2026-10-15,Rio de Janeiro,Mercado,178.68,entregue
+870,2026-10-14,São Paulo,Restaurante,50.48,entregue
+871,2026-10-31,São Paulo,Restaurante,115.69,entregue
+872,2026-10-26,Curitiba,Farmácia,120.78,entregue
+873,2026-10-25,Rio de Janeiro,Farmácia,26.63,entregue
+874,2026-10-27,São Paulo,Mercado,231.69,entregue
+875,2026-10-14,Belo Horizonte,Restaurante,34.57,entregue
+876,2026-10-01,Curitiba,Farmácia,152.63,entregue
+877,2026-10-31,Rio de Janeiro,Farmácia,140.31,entregue
+878,2026-10-04,Belo Horizonte,Farmácia,187.13,entregue
+879,2026-10-22,Belo Horizonte,Restaurante,212.98,entregue
+880,2026-10-20,Brasília,Restaurante,167.98,entregue
+881,2026-10-28,Belo Horizonte,Mercado,219.97,entregue
+882,2026-10-16,Rio de Janeiro,Restaurante,96.11,entregue
+883,2026-10-17,São Paulo,Farmácia,167.96,entregue
+884,2026-10-08,Brasília,Mercado,122.16,entregue
+885,2026-10-03,Belo Horizonte,Mercado,92.69,em_atraso
+886,2026-10-24,Brasília,Restaurante,112.79,entregue
+887,2026-10-18,Brasília,Restaurante,202.11,em_atraso
+888,2026-10-21,Rio de Janeiro,Farmácia,149.34,entregue
+889,2026-10-15,Rio de Janeiro,Mercado,209.82,cancelado
+890,2026-10-28,Belo Horizonte,Mercado,148.83,entregue
+891,2026-10-16,Rio de Janeiro,Farmácia,124.08,entregue
+892,2026-10-22,São Paulo,Restaurante,98.51,cancelado
+893,2026-10-31,Rio de Janeiro,Farmácia,140.06,entregue
+894,2026-10-02,São Paulo,Mercado,52.3,entregue
+895,2026-10-24,Belo Horizonte,Restaurante,78.49,entregue
+896,2026-10-04,Belo Horizonte,Restaurante,125.12,entregue
+897,2026-10-23,Rio de Janeiro,Restaurante,194.14,entregue
+898,2026-10-21,Curitiba,Restaurante,197.59,entregue
+899,2026-10-22,Curitiba,Farmácia,50.97,entregue
+900,2026-10-17,Brasília,Farmácia,235.12,cancelado
+901,2026-10-16,Curitiba,Restaurante,179.12,entregue
+902,2026-10-27,São Paulo,Restaurante,109.1,entregue
+903,2026-10-29,Rio de Janeiro,Farmácia,222.72,entregue
+904,2026-10-20,São Paulo,Mercado,111.51,entregue
+905,2026-10-10,Belo Horizonte,Restaurante,51.78,entregue
+906,2026-10-29,Curitiba,Mercado,213.91,entregue
+907,2026-10-11,Curitiba,Farmácia,69.99,entregue
+908,2026-10-23,Rio de Janeiro,Farmácia,99.42,entregue
+909,2026-10-23,São Paulo,Farmácia,144.77,entregue
+910,2026-10-23,Brasília,Mercado,149.32,entregue
+911,2026-10-31,Belo Horizonte,Farmácia,192.01,cancelado
+912,2026-10-10,Belo Horizonte,Restaurante,140.23,entregue
+913,2026-10-05,Brasília,Farmácia,33.02,entregue
+914,2026-10-26,São Paulo,Mercado,177.18,entregue
+915,2026-10-02,Rio de Janeiro,Restaurante,193.33,entregue
+916,2026-10-27,Belo Horizonte,Restaurante,161.71,entregue
+917,2026-10-18,São Paulo,Farmácia,168.84,entregue
+918,2026-10-17,Rio de Janeiro,Farmácia,172.83,em_atraso
+919,2026-10-13,Belo Horizonte,Farmácia,91.91,entregue
+920,2026-10-01,Rio de Janeiro,Restaurante,162.73,entregue
+921,2026-10-28,Belo Horizonte,Restaurante,229.64,entregue
+922,2026-10-21,Rio de Janeiro,Farmácia,145.72,entregue
+923,2026-10-25,São Paulo,Mercado,123.23,em_atraso
+924,2026-10-03,São Paulo,Restaurante,189.07,entregue
+925,2026-10-02,Belo Horizonte,Mercado,148.02,entregue
+926,2026-10-19,Rio de Janeiro,Restaurante,96.03,entregue
+927,2026-10-05,Brasília,Restaurante,233.58,entregue
+928,2026-10-25,Curitiba,Farmácia,89.27,entregue
+929,2026-10-18,Rio de Janeiro,Restaurante,200.33,entregue
+930,2026-10-08,São Paulo,Farmácia,35.68,entregue
+931,2026-10-14,Curitiba,Farmácia,112.79,entregue
+932,2026-10-29,São Paulo,Farmácia,96.33,entregue
+933,2026-10-07,Curitiba,Farmácia,129.22,entregue
+934,2026-10-25,Brasília,Restaurante,173.86,entregue
+935,2026-10-29,Curitiba,Farmácia,76.08,entregue
+936,2026-10-29,Rio de Janeiro,Mercado,230.66,em_atraso
+937,2026-10-13,Rio de Janeiro,Farmácia,186.51,entregue
+938,2026-10-17,Rio de Janeiro,Farmácia,204.65,entregue
+939,2026-10-02,Rio de Janeiro,Farmácia,64.28,entregue
+940,2026-10-31,Brasília,Restaurante,243.47,entregue
+941,2026-10-18,Brasília,Farmácia,35.06,entregue
+942,2026-10-25,São Paulo,Farmácia,117.57,entregue
+943,2026-10-18,Belo Horizonte,Farmácia,207.85,entregue
+944,2026-10-22,São Paulo,Restaurante,125.62,entregue
+945,2026-10-03,Brasília,Restaurante,60.94,entregue
+946,2026-10-03,Curitiba,Restaurante,229.53,entregue
+947,2026-10-15,Belo Horizonte,Mercado,92.77,entregue
+948,2026-10-04,Curitiba,Restaurante,167.53,entregue
+949,2026-10-25,Curitiba,Restaurante,181.2,entregue
+950,2026-10-30,Curitiba,Restaurante,86.66,entregue
+951,2026-10-20,Brasília,Mercado,196.01,entregue
+952,2026-10-13,Brasília,Mercado,55.95,entregue
+953,2026-10-24,Belo Horizonte,Farmácia,87.85,entregue
+954,2026-10-10,Rio de Janeiro,Restaurante,147.31,entregue
+955,2026-10-04,Brasília,Restaurante,151.73,entregue
+956,2026-10-18,Brasília,Mercado,68.31,entregue
+957,2026-10-24,Rio de Janeiro,Restaurante,114.91,entregue
+958,2026-10-17,São Paulo,Restaurante,62.32,entregue
+959,2026-10-09,São Paulo,Restaurante,61.71,entregue
+960,2026-10-28,Brasília,Farmácia,126.09,entregue
+961,2026-10-10,Brasília,Mercado,42.59,entregue
+962,2026-10-16,Rio de Janeiro,Mercado,49.49,entregue
+963,2026-10-04,Rio de Janeiro,Farmácia,36.06,entregue
+964,2026-10-16,Belo Horizonte,Mercado,161.76,entregue
+965,2026-10-19,São Paulo,Farmácia,150.38,cancelado
+966,2026-10-31,Belo Horizonte,Restaurante,21.11,entregue
+967,2026-10-08,Belo Horizonte,Mercado,213.23,entregue
+968,2026-10-24,Rio de Janeiro,Mercado,126.46,entregue
+969,2026-10-10,Belo Horizonte,Farmácia,45.03,entregue
+970,2026-10-03,Rio de Janeiro,Restaurante,225.0,entregue
+971,2026-10-24,Brasília,Farmácia,37.34,entregue
+972,2026-10-17,Brasília,Farmácia,153.15,entregue
+973,2026-10-07,Brasília,Farmácia,79.94,em_atraso
+974,2026-10-18,Belo Horizonte,Farmácia,198.3,entregue
+975,2026-10-08,Curitiba,Farmácia,217.15,entregue
+976,2026-10-17,Curitiba,Restaurante,111.26,entregue
+977,2026-10-22,São Paulo,Farmácia,177.36,entregue
+978,2026-10-05,Belo Horizonte,Restaurante,61.2,em_atraso
+979,2026-10-22,São Paulo,Farmácia,188.36,em_atraso
+980,2026-10-02,São Paulo,Mercado,73.3,entregue
+981,2026-10-08,Brasília,Farmácia,67.56,em_atraso
+982,2026-10-12,Belo Horizonte,Mercado,231.12,em_atraso
+983,2026-10-02,Rio de Janeiro,Restaurante,181.86,entregue
+984,2026-10-27,Rio de Janeiro,Farmácia,80.56,entregue
+985,2026-10-06,Belo Horizonte,Farmácia,107.06,entregue
+986,2026-10-29,Brasília,Farmácia,77.86,em_atraso
+987,2026-10-08,Curitiba,Mercado,101.17,cancelado
+988,2026-10-16,Belo Horizonte,Farmácia,21.52,em_atraso
+989,2026-10-15,São Paulo,Restaurante,37.73,entregue
+990,2026-10-07,São Paulo,Restaurante,56.19,entregue
+991,2026-10-27,Brasília,Farmácia,72.98,cancelado
+992,2026-10-24,Brasília,Mercado,175.3,entregue
+993,2026-10-19,São Paulo,Farmácia,211.67,entregue
+994,2026-10-02,São Paulo,Farmácia,156.24,entregue
+995,2026-10-17,Brasília,Farmácia,53.78,entregue
+996,2026-10-30,São Paulo,Farmácia,240.39,entregue
+997,2026-10-19,Brasília,Farmácia,187.43,cancelado
+998,2026-10-31,Brasília,Restaurante,123.32,em_atraso
+999,2026-10-28,Belo Horizonte,Restaurante,70.45,entregue
+1000,2026-10-05,Curitiba,Restaurante,163.34,entregue
