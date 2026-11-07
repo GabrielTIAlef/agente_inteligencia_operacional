@@ -1,6 +1,6 @@
 
 from datetime import date
-
+import re
 from app.database import (
     get_indicadores_gerais,
     get_indicadores_por_regiao,
@@ -31,17 +31,40 @@ def consultar_regioes_por_periodo(
     data_inicio: str,
     data_fim: str
 ):
-    """Consulta indicadores regionais em um período."""
+    """Consulta indicadores regionais em um período válido."""
 
-    inicio = date.fromisoformat(data_inicio)
-    fim = date.fromisoformat(data_fim)
+    formato = r"\d{4}-\d{2}-\d{2}"
+
+    if (
+        not isinstance(data_inicio, str)
+        or not isinstance(data_fim, str)
+        or not re.fullmatch(formato, data_inicio)
+        or not re.fullmatch(formato, data_fim)
+    ):
+        raise ValueError(
+            "As datas devem estar no formato AAAA-MM-DD."
+        )
+
+    try:
+        inicio = date.fromisoformat(data_inicio)
+        fim = date.fromisoformat(data_fim)
+    except ValueError as erro:
+        raise ValueError(
+            "Foi informada uma data inexistente."
+        ) from erro
 
     if inicio > fim:
         raise ValueError(
             "A data inicial não pode ser posterior à final."
         )
 
+    if (fim - inicio).days > 366:
+        raise ValueError(
+            "O período não pode ultrapassar 366 dias."
+        )
+
     return get_regioes_por_periodo(inicio, fim)
+
 
 
 # Lista explícita de ferramentas permitidas.
