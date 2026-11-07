@@ -13,16 +13,19 @@ CSV_PATH = BASE_DIR / "data" / "synthetic" / "pedidos.csv"
 load_dotenv(BASE_DIR / ".env")
 
 
-def conectar_banco():
+def conectar_banco(*, somente_leitura=False):
     """Abre uma conexão com o PostgreSQL."""
 
-    return psycopg.connect(
-        host=os.environ["DB_HOST"],
-        port=os.environ["DB_PORT"],
-        dbname=os.environ["DB_NAME"],
-        user=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"],
-    )
+    names = ("host", "port", "dbname", "user", "password")
+    keys = ("DB_HOST", "DB_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD")
+    try:
+        config = {name: os.environ[key] for name, key in zip(names, keys)}
+    except KeyError as error:
+        raise psycopg.OperationalError("Configuração do PostgreSQL incompleta.") from error
+
+    if somente_leitura:
+        config["options"] = "-c default_transaction_read_only=on -c statement_timeout=5000"
+    return psycopg.connect(**config, connect_timeout=5)
 
 
 def extrair_pedidos():

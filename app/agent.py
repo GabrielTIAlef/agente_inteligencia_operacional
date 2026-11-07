@@ -1,4 +1,5 @@
 
+import logging
 import os
 from pathlib import Path
 
@@ -6,8 +7,11 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+from app.access import trace_id
 from app.tools import executar_ferramenta
 
+
+logger = logging.getLogger("uvicorn.error")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
@@ -19,7 +23,7 @@ def get_general_metrics() -> dict:
     Retorna total de pedidos, soma dos valores registrados,
     taxa de cancelamento e taxa de atraso.
     """
-    print("[TOOL] Executando get_general_metrics")
+    logger.info("request_id=%s tool=get_general_metrics", trace_id.get())
 
     return executar_ferramenta("get_general_metrics")
 
@@ -30,7 +34,7 @@ def get_regions_metrics() -> list[dict]:
     Retorna total, soma dos valores, cancelamentos
     e atrasos para cada região.
     """
-    print("[TOOL] Executando get_regions_metrics")
+    logger.info("request_id=%s tool=get_regions_metrics", trace_id.get())
 
     return executar_ferramenta("get_regions_metrics")
 
@@ -42,7 +46,7 @@ def get_categories_metrics() -> list[dict]:
     taxa de cancelamento e taxa de atraso
     para Restaurante, Mercado e Farmácia.
     """
-    print("[TOOL] Executando get_categories_metrics")
+    logger.info("request_id=%s tool=get_categories_metrics", trace_id.get())
 
     return executar_ferramenta("get_categories_metrics")
 
@@ -58,10 +62,7 @@ def get_regions_by_period(
         data_inicio: Data inicial no formato AAAA-MM-DD.
         data_fim: Data final no formato AAAA-MM-DD.
     """
-    print(
-        f"[TOOL] Executando get_regions_by_period: "
-        f"{data_inicio} até {data_fim}"
-    )
+    logger.info("request_id=%s tool=get_regions_by_period", trace_id.get())
 
     return executar_ferramenta(
         "get_regions_by_period",
@@ -107,25 +108,29 @@ def criar_chat():
 
     chave = os.environ["GEMINI_API_KEY"]
 
-    client = genai.Client(api_key=chave)
+    client = genai.Client(api_key=chave, http_options=types.HttpOptions(timeout=15000))
 
-    chat = client.chats.create(
-        model="gemini-3.5-flash",
-    config=types.GenerateContentConfig(
-        system_instruction=INSTRUCOES,
-        tools=[
-            get_general_metrics,
-            get_regions_metrics,
-            get_categories_metrics,
-            get_regions_by_period,
-        ],
-        temperature=0.2,
-        automatic_function_calling=types.AutomaticFunctionCallingConfig(
-            maximum_remote_calls=5,
-        ),
-    ),
-
-    )
+    try:
+        chat = client.chats.create(
+            model=os.getenv("GEMINI_MODEL", "gemini-3.5-flash"),
+            config=types.GenerateContentConfig(
+                system_instruction=INSTRUCOES,
+                tools=[
+                    get_general_metrics,
+                    get_regions_metrics,
+                    get_categories_metrics,
+                    get_regions_by_period,
+                ],
+                temperature=0.2,
+                max_output_tokens=2048,
+                automatic_function_calling=types.AutomaticFunctionCallingConfig(
+                    maximum_remote_calls=5,
+                ),
+            ),
+        )
+    except Exception:
+        client.close()
+        raise
 
     return client, chat
 

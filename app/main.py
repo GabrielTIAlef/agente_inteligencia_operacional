@@ -1,5 +1,13 @@
+import logging
 from datetime import date
-from fastapi import FastAPI, HTTPException, Query
+
+from psycopg import Error as DatabaseError
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+from starlette.middleware.trustedhost import TrustedHostMiddleware
+from app.access import LOCAL_HOSTS, allowed_origins, local_access
+from app.reports import router as reports_router
 from app.agent_api import router as agent_router
 from fastapi.middleware.cors import CORSMiddleware
 from app.analytics import (
@@ -24,16 +32,31 @@ app = FastAPI(
 )
 
 
+origins = allowed_origins()
+app.middleware("http")(local_access(origins))
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
-    allow_credentials=False,
+    allow_origins=origins,
     allow_methods=["GET", "POST"],
-    allow_headers=["*"],
+    allow_headers=["Content-Type"],
+    expose_headers=["X-Request-ID"],
 )
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=LOCAL_HOSTS + ["testserver"])
+
+
+@app.exception_handler(RequestValidationError)
+async def invalid_request(request: Request, error: RequestValidationError):
+    details = [{"loc": item["loc"], "msg": item["msg"], "type": item["type"]}
+               for item in error.errors()]
+    return JSONResponse({"detail": details}, 422)
+
+
+@app.exception_handler(DatabaseError)
+async def unavailable_database(request: Request, error: DatabaseError):
+    logging.getLogger("uvicorn.error").warning(
+        "request_id=%s database_error=%s", request.state.request_id, type(error).__name__,
+    )
+    return JSONResponse({"detail": "Banco de dados temporariamente indisponível."}, 503)
 
 
 @app.get("/")
@@ -242,3 +265,5 @@ def get_database_regions_by_period(
     }
 
 app.include_router(agent_router)
+
+app.include_router(reports_router)

@@ -3,9 +3,10 @@ import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field, field_validator
 from google.genai.errors import ClientError
+from app.access import trace_id
 from app.agent import perguntar_ao_agente
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("uvicorn.error")
 
 router = APIRouter(
     prefix="/agent",
@@ -55,7 +56,7 @@ def conversar_com_agente(requisicao: ChatRequest):
     except ClientError as erro:
         if erro.code == 429:
             logger.warning(
-                "Limite de requisições do Gemini atingido."
+                "request_id=%s gemini_status=429", trace_id.get()
             )
 
             raise HTTPException(
@@ -66,7 +67,7 @@ def conversar_com_agente(requisicao: ChatRequest):
                 ),
             ) from erro
 
-        logger.warning("Erro na API do Gemini (código %s)", erro.code)
+        logger.warning("request_id=%s gemini_status=%s", trace_id.get(), erro.code)
 
         raise HTTPException(
             status_code=502,
@@ -74,7 +75,7 @@ def conversar_com_agente(requisicao: ChatRequest):
         ) from erro
 
     except Exception as erro:
-        logger.error("Erro interno do agente (%s)", type(erro).__name__)
+        logger.error("request_id=%s agent_error=%s", trace_id.get(), type(erro).__name__)
 
         raise HTTPException(
             status_code=503,

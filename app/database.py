@@ -1,10 +1,12 @@
+from contextlib import nullcontext
 
-from decimal import Decimal
+from psycopg import IsolationLevel
+
 
 from etl.load_orders import conectar_banco
 
 
-def get_indicadores_gerais():
+def get_indicadores_gerais(*, conexao=None):
     """Consulta indicadores diretamente no PostgreSQL."""
 
     sql = """
@@ -32,7 +34,7 @@ def get_indicadores_gerais():
         FROM pedidos;
     """
 
-    with conectar_banco() as conexao:
+    with (nullcontext(conexao) if conexao is not None else conectar_banco(somente_leitura=True)) as conexao:
         with conexao.cursor() as cursor:
             cursor.execute(sql)
             resultado = cursor.fetchone()
@@ -45,7 +47,7 @@ def get_indicadores_gerais():
     }
 
 
-def get_indicadores_por_regiao():
+def get_indicadores_por_regiao(*, conexao=None):
     """Consulta indicadores agrupados por região."""
 
     sql = """
@@ -70,7 +72,7 @@ def get_indicadores_por_regiao():
         ORDER BY taxa_cancelamento DESC, regiao;
     """
 
-    with conectar_banco() as conexao:
+    with (nullcontext(conexao) if conexao is not None else conectar_banco(somente_leitura=True)) as conexao:
         with conexao.cursor() as cursor:
             cursor.execute(sql)
             resultados = cursor.fetchall()
@@ -87,7 +89,7 @@ def get_indicadores_por_regiao():
     ]
 
 
-def get_indicadores_por_categoria():
+def get_indicadores_por_categoria(*, conexao=None):
     """Consulta indicadores agrupados por categoria."""
 
     sql = """
@@ -112,7 +114,7 @@ def get_indicadores_por_categoria():
         ORDER BY taxa_atraso DESC, categoria;
     """
 
-    with conectar_banco() as conexao:
+    with (nullcontext(conexao) if conexao is not None else conectar_banco(somente_leitura=True)) as conexao:
         with conexao.cursor() as cursor:
             cursor.execute(sql)
             resultados = cursor.fetchall()
@@ -155,7 +157,7 @@ def get_regioes_por_periodo(data_inicio, data_fim):
         ORDER BY taxa_cancelamento DESC, regiao;
     """
 
-    with conectar_banco() as conexao:
+    with conectar_banco(somente_leitura=True) as conexao:
         with conexao.cursor() as cursor:
             cursor.execute(sql, (data_inicio, data_fim))
             resultados = cursor.fetchall()
@@ -170,3 +172,14 @@ def get_regioes_por_periodo(data_inicio, data_fim):
         }
         for linha in resultados
     ]
+
+
+def get_operations_snapshot():
+    """Lê as três agregações na mesma visão dos pedidos."""
+    with conectar_banco(somente_leitura=True) as conexao:
+        conexao.isolation_level = IsolationLevel.REPEATABLE_READ
+        return {
+            "summary": get_indicadores_gerais(conexao=conexao),
+            "regions": get_indicadores_por_regiao(conexao=conexao),
+            "categories": get_indicadores_por_categoria(conexao=conexao),
+        }
