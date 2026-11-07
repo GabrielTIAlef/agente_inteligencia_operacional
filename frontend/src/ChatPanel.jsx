@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './ChatPanel.css'
 
-const API_URL = 'http://127.0.0.1:8000/agent/chat'
+import { apiUrl, errorWithTrace } from './api'
 
 const sugestoes = [
   'Quantos pedidos existem na base?',
@@ -53,7 +53,7 @@ function ChatPanel() {
   async function enviarPergunta(texto) {
     const mensagem = texto.trim()
 
-    if (!mensagem || carregando || mensagem.length > 500) {
+    if (!mensagem || requisicaoAtual.current || mensagem.length > 500) {
       return
     }
 
@@ -65,7 +65,7 @@ function ChatPanel() {
     requisicaoAtual.current = controller
 
     try {
-      const resposta = await fetch(API_URL, {
+      const resposta = await fetch(apiUrl('/agent/chat'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,18 +76,10 @@ function ChatPanel() {
         signal: controller.signal,
       })
 
-      if (resposta.status === 429) {
-        throw new Error(
-          'O limite de uso do Gemini foi atingido. ' +
-          'Tente novamente após a renovação da cota.'
-        )
-      }
-
       if (!resposta.ok) {
-        throw new Error(
-          'Não foi possível consultar o agente. ' +
-          `Código HTTP: ${resposta.status}.`
-        )
+        const body = await resposta.json().catch(() => null)
+        const message = typeof body?.detail === 'string' ? body.detail : 'Não foi possível consultar o agente.'
+        throw errorWithTrace(resposta, message)
       }
 
       const dados = await resposta.json()
@@ -211,7 +203,7 @@ function ChatPanel() {
               setPergunta(evento.target.value)
             }
             onKeyDown={(evento) => {
-              if (evento.key === 'Enter' && !evento.shiftKey) {
+              if (evento.key === 'Enter' && !evento.shiftKey && !evento.nativeEvent.isComposing) {
                 evento.preventDefault()
                 enviarPergunta(pergunta)
               }

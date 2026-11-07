@@ -1,4 +1,6 @@
 import ChatPanel from './ChatPanel'
+import OperationsReport, { Breakdown } from './OperationsReport'
+import { fetchReport } from './api'
 import { useEffect, useState } from 'react'
 import './App.css'
 
@@ -61,62 +63,35 @@ function App() {
   const [activePage, setActivePage] = useState('dashboard')
 
 
-  const [indicadores, setIndicadores] = useState(null)
+  const [report, setReport] = useState(null)
+  const [refreshCount, setRefreshCount] = useState(0)
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
 
+  function refresh() {
+    setCarregando(true)
+    setErro(null)
+    setRefreshCount((previous) => previous + 1)
+  }
+
   useEffect(() => {
     const controller = new AbortController()
-
-    async function buscarIndicadores() {
-      try {
-        const resposta = await fetch(
-          'http://127.0.0.1:8000/metrics/database',
-          { signal: controller.signal }
-        )
-
-        if (!resposta.ok) {
-          throw new Error(
-            `Erro HTTP ${resposta.status}`
-          )
-        }
-
-        const resultado = await resposta.json()
-
-        if (
-          resultado.status !== 'success' ||
-          !resultado.data ||
-          typeof resultado.data.total_pedidos !== 'number'
-        ) {
-          throw new Error('Formato de resposta inesperado')
-        }
-
-        setIndicadores(resultado.data)
-        setErro(null)
-
-      } catch (error) {
-        if (error.name !== 'AbortError') {
-          setErro(
-            'Não foi possível carregar os indicadores. ' +
-            'Verifique se a FastAPI está funcionando.'
-          )
-        }
-      } finally {
+    fetchReport(controller.signal)
+      .then((data) => {
+        if (!controller.signal.aborted) setReport(data)
+      })
+      .catch((error) => {
         if (!controller.signal.aborted) {
-          setCarregando(false)
+          setErro(error instanceof TypeError ? 'Não foi possível conectar à FastAPI.' : error.message)
         }
-      }
-    }
-
-    buscarIndicadores()
-
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setCarregando(false)
+      })
     return () => controller.abort()
-  }, [])
+  }, [refreshCount])
 
-  const metricCards = indicadores
-    ? criarCartoes(indicadores)
-    : []
-
+  const metricCards = report ? criarCartoes(report.summary) : []
 
   const pageTitle = {
     dashboard: 'Visão geral',
@@ -148,6 +123,7 @@ function App() {
                   ? 'nav-item active'
                   : 'nav-item'
               }
+              aria-current={activePage === item.id ? "page" : undefined}
               onClick={() => setActivePage(item.id)}
             >
               <span className="nav-icon">{item.icon}</span>
@@ -213,7 +189,7 @@ function App() {
                 </p>
               </div>
               <span className="section-tag">
-                Outubro de 2026
+                Todo o histórico
               </span>
             </div>
 
@@ -228,6 +204,7 @@ function App() {
               {erro && !carregando && (
                 <div className="data-message error-message" role="alert">
                   {erro}
+                  <button type="button" className="secondary-button" onClick={refresh}>Tentar novamente</button>
                 </div>
               )}
 
@@ -245,46 +222,12 @@ function App() {
             </section>
 
 
-            <section className="content-grid">
-              <article className="content-card">
-                <h3>Análise operacional</h3>
-                <p>
-                  Em breve, esta área mostrará gráficos
-                  conectados ao PostgreSQL.
-                </p>
-
-                <div className="empty-visual">
-                  <span>▥</span>
-                  <strong>Visualizações em preparação</strong>
-                  <p>Integração prevista para a Etapa 30.</p>
-                </div>
-              </article>
-
-              <article className="content-card">
-                <h3>Assistente inteligente</h3>
-                <p>
-                  Analise os dados utilizando perguntas
-                  em linguagem natural.
-                </p>
-
-                <div className="assistant-preview">
-                  <span>✦</span>
-                  <strong>AI Operations Agent</strong>
-                  <p>
-                    Consultas SQL, indicadores e análises
-                    com Gemini.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  className="secondary-button"
-                  onClick={() => setActivePage('chat')}
-                >
-                  Abrir chat →
-                </button>
-              </article>
-            </section>
+            {report && !carregando && !erro && (
+              <section className="breakdown-grid" aria-label="Detalhamento dos indicadores">
+                <Breakdown title="Pedidos por região" rows={report.regions} dimension="regiao" />
+                <Breakdown title="Pedidos por categoria" rows={report.categories} dimension="categoria" />
+              </section>
+            )}
           </div>
         )}
 
@@ -296,17 +239,7 @@ function App() {
         
         {activePage === 'automations' && (
           <div className="page-content">
-            <section className="placeholder-page">
-              <div className="placeholder-icon">⚡</div>
-              <h2>Automações inteligentes</h2>
-              <p>
-                Nesta área, criaremos fluxos automatizados
-                utilizando n8n.
-              </p>
-              <span className="coming-soon">
-                Funcionalidade futura
-              </span>
-            </section>
+            <OperationsReport report={report} loading={carregando} error={erro} refresh={refresh} />
           </div>
         )}
       </main>

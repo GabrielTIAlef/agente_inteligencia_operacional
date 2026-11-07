@@ -1,0 +1,82 @@
+{
+  "name": "AI Operations — prévia de relatório",
+  "active": false,
+  "settings": {
+    "timezone": "America/Sao_Paulo",
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "d94c7061-8f03-4c60-8c7c-0adc465c0020",
+      "name": "Executar manualmente",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 9,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "edc84bdb-2805-4514-8239-1965ad226d88",
+      "name": "Diariamente às 09h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://127.0.0.1:8000/reports/operations",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "40d6e681-899f-4a63-ae7a-bf957ac521b7",
+      "name": "Consultar prévia operacional",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        100
+      ]
+    }
+  ],
+  "connections": {
+    "Executar manualmente": {
+      "main": [
+        [
+          {
+            "node": "Consultar prévia operacional",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Diariamente às 09h": {
+      "main": [
+        [
+          {
+            "node": "Consultar prévia operacional",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

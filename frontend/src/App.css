@@ -492,3 +492,48 @@
   border-color: #fecaca;
   color: #b91c1c;
 }
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.breakdown-scroll {
+  overflow-x: auto;
+}
+
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.breakdown-table th,
+.breakdown-table td {
+  padding: 0.65rem;
+  border-bottom: 1px solid #64748b55;
+}
+
+.report-preview {
+  max-height: 20rem;
+  overflow: auto;
+}
+
+.report-approval {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.report-preview, .content-card {
+  overflow-wrap: anywhere;
+}
