@@ -1,6 +1,7 @@
 from datetime import date
 from fastapi import FastAPI, HTTPException, Query
 from app.agent_api import router as agent_router
+from fastapi.middleware.cors import CORSMiddleware
 from app.analytics import (
     carregar_pedidos,
     calcular_indicadores,
@@ -20,6 +21,18 @@ app = FastAPI(
     title="AI Operations Agent",
     description="API de inteligência operacional para um marketplace fictício.",
     version="0.2.0",
+)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=False,
+    allow_methods=["GET"],
+    allow_headers=["*"],
 )
 
 
