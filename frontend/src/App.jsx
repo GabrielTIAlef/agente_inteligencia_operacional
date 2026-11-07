@@ -1,4 +1,4 @@
-
+import ChatPanel from './ChatPanel'
 import { useEffect, useState } from 'react'
 import './App.css'
 
@@ -290,20 +290,10 @@ function App() {
 
         {activePage === 'chat' && (
           <div className="page-content">
-            <section className="placeholder-page">
-              <div className="placeholder-icon">✦</div>
-              <h2>Converse com seus dados</h2>
-              <p>
-                Aqui construiremos o chat integrado ao Gemini
-                e às ferramentas PostgreSQL na próxima etapa.
-              </p>
-              <span className="coming-soon">
-                Interface em desenvolvimento
-              </span>
-            </section>
+            <ChatPanel />
           </div>
         )}
-
+        
         {activePage === 'automations' && (
           <div className="page-content">
             <section className="placeholder-page">
