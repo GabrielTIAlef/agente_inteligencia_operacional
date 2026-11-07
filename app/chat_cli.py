@@ -73,13 +73,6 @@ def iniciar_chat():
                 client.close()
                 client, chat = criar_chat()
 
-
-            except Exception as erro:
-                print("\nOcorreu um erro ao processar sua pergunta.")
-                print(f"Tipo do erro: {type(erro).__name__}")
-                # Não exibimos a mensagem completa para evitar
-                # exposição acidental de dados internos.
-
     finally:
         client.close()
 

@@ -1,6 +1,6 @@
 from datetime import date
 from fastapi import FastAPI, HTTPException, Query
-
+from app.agent_api import router as agent_router
 from app.analytics import (
     carregar_pedidos,
     calcular_indicadores,
@@ -227,3 +227,5 @@ def get_database_regions_by_period(
             end_date,
         ),
     }
+
+app.include_router(agent_router)
