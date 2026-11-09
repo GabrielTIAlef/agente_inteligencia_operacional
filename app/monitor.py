@@ -105,4 +105,3 @@ def monitor_runs():
         with connection.cursor(row_factory=dict_row) as cursor:
             cursor.execute("SELECT * FROM monitor_runs ORDER BY id DESC LIMIT 20")
             return {"runs": cursor.fetchall()}
-
