@@ -1,6 +1,58 @@
-# AI Operations Agent
 
-Painel de operações para um marketplace fictício. O React exibe indicadores do PostgreSQL e oferece um chat com Gemini. O n8n gera uma prévia de relatório a partir da mesma API.
+# Agente de Inteligência Operacional
+
+Plataforma de análise operacional com **Python, PostgreSQL, FastAPI, React, Gemini e n8n**, desenvolvida para consolidar indicadores, responder a perguntas em linguagem natural e automatizar relatórios de um marketplace fictício.
+
+O projeto integra Engenharia de Dados, Business Intelligence, IA generativa e automação de processos. Toda a demonstração utiliza dados sintéticos.
+
+## Contexto e problema de negócio
+
+Marketplaces e plataformas de entregas precisam acompanhar pedidos, cancelamentos, atrasos e diferenças de desempenho entre regiões e categorias.
+
+Entretanto, transformar registros operacionais em informações úteis pode exigir consultas SQL, consolidação manual de indicadores e preparação recorrente de relatórios.
+
+A solução foi desenvolvida para demonstrar como enfrentar quatro desafios:
+
+- **Centralização:** reunir informações operacionais em uma base estruturada.
+- **Acessibilidade:** permitir consultas a indicadores sem exigir SQL do usuário.
+- **Monitoramento:** acompanhar cancelamentos, atrasos e diferenças regionais.
+- **Automação:** padronizar a obtenção de relatórios operacionais.
+
+O cenário é fictício e não representa dados ou resultados de uma empresa real.
+
+## Solução desenvolvida
+
+A aplicação combina cinco componentes:
+
+1. **ETL em Python:** valida registros sintéticos e realiza cargas transacionais no PostgreSQL, com UPSERT por identificador.
+2. **Dashboard React:** apresenta indicadores operacionais e agrupamentos por região e categoria.
+3. **Agente Gemini:** interpreta perguntas em linguagem natural e utiliza ferramentas SQL previamente autorizadas.
+4. **FastAPI:** disponibiliza os indicadores e relatórios, com validações e rastreabilidade.
+5. **n8n:** executa um fluxo de obtenção de relatórios, manualmente ou por agendamento quando ativado.
+
+O agente não recebe acesso irrestrito ao banco. As consultas são implementadas no backend e executadas em transações de leitura.
+
+## Resultados da demonstração
+
+A base fictícia de referência contém 1.000 pedidos de outubro de 2026.
+
+| Indicador | Resultado |
+| --- | ---: |
+| Pedidos registrados | 1.000 |
+| Soma dos valores dos pedidos | R$ 135.544,32 |
+| Taxa de cancelamento | 8,9% |
+| Taxa de atraso | 9,9% |
+| Regiões | 5 |
+| Categorias | 3 |
+
+Esses números descrevem somente o conjunto de dados sintéticos. Não representam receita empresarial, redução de custos ou impacto operacional real.
+
+A última auditoria técnica registrou 40 testes Python aprovados, além de lint e build do frontend concluídos com sucesso. O funcionamento do chat também foi confirmado em teste local.
+
+## Objetivo técnico
+
+Demonstrar uma arquitetura integrada de dados e IA generativa, em que respostas em linguagem natural são fundamentadas em consultas SQL reproduzíveis, enquanto indicadores e relatórios permanecem acessíveis independentemente do modelo de IA.
+
 
 ## Arquitetura
 
