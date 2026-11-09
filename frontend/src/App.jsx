@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ChatPanel from './ChatPanel'
+import OperationsReport from './OperationsReport'
 import { apiUrl, errorWithTrace } from './api'
 import './App.css'
 
@@ -8,6 +9,7 @@ const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL
 const percent = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 })
 const statuses = { entregue: 'Entregues', cancelado: 'Cancelados', em_atraso: 'Em atraso' }
 const day = (value) => value?.split('-').reverse().join('/')
+const delta = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1, signDisplay: 'exceptZero' })
 const rate = (value) => value == null ? '—' : percent.format(value) + '%'
 
 function DataView({ path, children }) {
@@ -51,9 +53,12 @@ function Daily({ rows }) {
   if (!rows.length) return <p>Sem cobertura no intervalo.</p>
   const max = Math.max(1, ...rows.map((row) => row.orders))
   return <>
-    <div className="chart" aria-hidden="true">
+    <div className="chart-frame" aria-hidden="true">
+      <div className="chart-scale"><span>{max}</span><span>0</span></div>
+      <div className="chart">
       {rows.map((row) => <span key={row.date} title={day(row.date) + ' · ' + row.orders}
-        style={{ height: Math.max(1, row.orders * 100 / max) + '%' }} />)}
+        style={{ height: row.orders * 100 / max + '%' }} />)}
+    </div>
     </div>
     <p className="chart-label"><span>{day(rows[0].date)}</span><span>{day(rows.at(-1).date)}</span></p>
     <details><summary>Consultar valores diários</summary>
@@ -106,7 +111,7 @@ function Dashboard({ data, onFilter, applied }) {
     <div className="columns">
       <section className="report-section"><h2>Ritmo de pedidos</h2>
         <p>{previous ? 'Janela anterior de mesma duração · ' + number.format(previous.orders) +
-          ' pedidos · diferença de ' + number.format(summary.orders - previous.orders) :
+          ' pedidos · diferença de ' + delta.format(summary.orders - previous.orders) :
           'A base não cobre integralmente as duas janelas para comparação.'}</p>
         <Daily rows={data.daily} />
       </section>
@@ -117,10 +122,31 @@ function Dashboard({ data, onFilter, applied }) {
         </li>)}</ul>
       </section>
     </div>
+    {previous && <section className="report-section comparison">
+      <h2>Comparação com a janela anterior</h2>
+      <table><thead><tr><th scope="col">Indicador</th><th scope="col">Anterior</th><th scope="col">Atual</th></tr></thead>
+        <tbody>{[
+          ['Pedidos', number.format(previous.orders), number.format(summary.orders)],
+          ['Valor dos pedidos', money.format(previous.value), money.format(summary.value)],
+          ['Cancelamento', rate(previous.cancellation), rate(summary.cancellation)],
+          ['Atraso', rate(previous.late), rate(summary.late)],
+        ].map(([label, before, now]) => <tr key={label}><th scope="row">{label}</th><td>{before}</td><td>{now}</td></tr>)}</tbody>
+      </table>
+    </section>}
     {summary.orders > 0 && <div className="columns rankings">
       <Ranking title="Volume por região" rows={data.regions} /><Ranking title="Volume por categoria" rows={data.categories} />
     </div>}
   </>
+}
+
+function ReportExport() {
+  const [version, setVersion] = useState(0)
+  return <details className="report-section export">
+    <summary>Exportar prévia operacional</summary>
+    <DataView key={version} path="/reports/operations">
+      {(report) => <OperationsReport report={report} refresh={() => setVersion(version + 1)} />}
+    </DataView>
+  </details>
 }
 
 function Monitor({ runs }) {
@@ -162,7 +188,10 @@ export default function App() {
           if (!next) setReset(reset + 1)
         }} />}
       </DataView>}
-      {page === 'automations' && <DataView path="/operations/monitor/runs">{({ runs }) => <Monitor runs={runs} />}</DataView>}
+      {page === 'automations' && <>
+        <DataView path="/operations/monitor/runs">{({ runs }) => <Monitor runs={runs} />}</DataView>
+        <ReportExport />
+      </>}
       {page === 'chat' && <ChatPanel />}
     </main>
   </>

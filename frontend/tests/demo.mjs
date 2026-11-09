@@ -1,50 +1,55 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { mkdir, readFile } from 'node:fs/promises'
 import { test } from 'node:test'
 
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
 const site = process.env.DEMO_URL || 'http://127.0.0.1:5173'
+const evidence = process.env.DEMO_SCREENSHOTS
 
-test('dashboard real, navegação móvel e aprovação de exportação', async () => {
+test('boletim, filtros e monitor com API real em três larguras', async () => {
   const browser = await chromium.launch({ channel: 'msedge' })
   try {
-    const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
-    await page.goto(site)
-    await page.getByRole('heading', { name: 'Pedidos por região' }).waitFor()
-    await page.getByRole('heading', { name: 'Pedidos por categoria' }).waitFor()
-    assert.equal(await page.locator('.metric-card').count(), 4)
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
-
-    await page.getByRole('button', { name: 'Automações' }).click()
-    const download = page.getByRole('button', { name: 'Baixar relatório JSON' })
-    assert.equal(await download.isDisabled(), true)
-    const approval = page.getByRole('checkbox', { name: 'Aprovo a exportação local desta prévia' })
-    await approval.check()
-    assert.equal(await download.isEnabled(), true)
-    await page.getByRole('button', { name: 'Atualizar prévia' }).click()
-    await download.waitFor()
-    assert.equal(await download.isDisabled(), true)
-
-    await approval.check()
-    const [file] = await Promise.all([page.waitForEvent('download'), download.click()])
-    const report = JSON.parse(await readFile(await file.path(), 'utf8'))
-    assert.equal(report.source, 'postgresql')
-    assert.equal(file.suggestedFilename(), `relatorio-operacional-${report.request_id}.json`)
-    assert.equal(await download.isDisabled(), true)
-
-    await page.getByRole('button', { name: 'Chat com IA' }).click()
-    await page.route('**/agent/chat', async (route) => {
-      if (route.request().method() !== 'POST') return route.continue()
-      assert.equal(route.request().postDataJSON().message, 'Quantos pedidos existem?')
-      await route.fulfill({
-        status: 503,
-        headers: { 'Access-Control-Expose-Headers': 'X-Request-ID', 'X-Request-ID': 'teste-navegador' },
-        json: { detail: 'Agente indisponível na simulação.' },
-      })
-    })
-    await page.getByRole('textbox', { name: 'Sua pergunta' }).fill('Quantos pedidos existem?')
-    await page.getByRole('button', { name: 'Enviar' }).click()
-    await page.getByText('Agente indisponível na simulação. Referência: teste-navegador.').waitFor()
+    if (evidence) await mkdir(evidence, { recursive: true })
+    for (const width of [1440, 768, 390]) {
+      const page = await browser.newPage({ viewport: { width, height: 940 } })
+      await page.goto(site)
+      await page.getByRole('heading', { name: 'Volume por região' }).waitFor()
+      await page.getByRole('heading', { name: 'Volume por categoria' }).waitFor()
+      assert.equal(await page.locator('.metrics dd').count(), 5)
+      await page.getByRole('heading', { name: 'Comparação com a janela anterior' }).waitFor()
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+      if (evidence) await page.screenshot({ path: evidence + '/boletim-' + width + '.png', fullPage: true })
+      const region = page.getByLabel('Região')
+      const options = await region.locator('option').allTextContents()
+      assert.ok(options.length > 1)
+      await region.selectOption({ label: options[1] })
+      const response = page.waitForResponse((result) => result.url().includes('/operations/dashboard?'))
+      await page.getByRole('button', { name: 'Aplicar' }).click()
+      assert.equal((await response).status(), 200)
+      await page.getByRole('heading', { name: 'Volume por região' }).waitFor()
+      await page.getByRole('button', { name: 'Monitoramento' }).click()
+      await page.getByRole('heading', { name: 'Registro de execuções' }).waitFor()
+      if (evidence && width === 1440) await page.screenshot({ path: evidence + '/monitoramento.png', fullPage: true })
+      if (width === 390) {
+        await page.getByText('Exportar prévia operacional').click()
+        const download = page.getByRole('button', { name: 'Baixar relatório JSON' })
+        await download.waitFor()
+        assert.ok(await download.isDisabled())
+        await page.getByRole('checkbox', { name: /Aprovo/ }).check()
+        const [file] = await Promise.all([page.waitForEvent('download'), download.click()])
+        assert.equal(JSON.parse(await readFile(await file.path(), 'utf8')).source, 'postgresql')
+        assert.ok(await download.isDisabled())
+        await page.getByRole('button', { name: 'Assistente de dados' }).click()
+        await page.getByRole('textbox', { name: 'Sua pergunta' }).waitFor()
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+      }
+      if (width === 1440 && evidence) {
+        await page.getByRole('button', { name: 'Assistente de dados' }).click()
+        await page.getByRole('textbox', { name: 'Sua pergunta' }).waitFor()
+        await page.screenshot({ path: evidence + '/assistente.png', fullPage: true })
+      }
+      await page.close()
+    }
   } finally {
     await browser.close()
   }
