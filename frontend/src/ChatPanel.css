@@ -2,7 +2,7 @@
 .chat-panel {
   background: #fff;
   border: 1px solid #e5ebf2;
-  border-radius: 18px;
+  border-radius: 2px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
   width: 45px;
   height: 45px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #38cdb9, #5376ea);
+  background: #203833;
   color: white;
   display: grid;
   place-items: center;
@@ -38,7 +38,7 @@
 .chat-panel-header p {
   margin: 0;
   font-size: 12px;
-  color: #8b98a8;
+  color: #51645b;
 }
 
 .chat-mode-badge {
@@ -55,7 +55,7 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  background: #f8fafc;
+  background: #f5f2e9;
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -77,7 +77,7 @@
 .message-author {
   font-size: 11px;
   font-weight: 700;
-  color: #7d8a9c;
+  color: #51645b;
 }
 
 .chat-message.user .message-author {
@@ -98,8 +98,8 @@
 
 .chat-message.user .message-bubble {
   color: white;
-  background: #264a68;
-  border-color: #264a68;
+  background: #203833;
+  border-color: #203833;
 }
 
 .chat-message.error .message-bubble {
@@ -181,7 +181,7 @@
 }
 
 .chat-disclaimer {
-  color: #93a0ae;
+  color: #51645b;
   text-align: center;
   font-size: 10px;
   margin: 10px 0 0;
@@ -222,3 +222,4 @@
     padding: 12px;
   }
 }
+
