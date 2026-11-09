@@ -267,3 +267,9 @@ def get_database_regions_by_period(
 app.include_router(agent_router)
 
 app.include_router(reports_router)
+
+from app.dashboard import router as dashboard_router
+from app.monitor import router as monitor_router
+
+app.include_router(dashboard_router)
+app.include_router(monitor_router)
