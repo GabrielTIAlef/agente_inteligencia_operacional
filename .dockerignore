@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+.pg-test
+.pytest_cache
+**/__pycache__
+**/node_modules
+**/dist
+.local-tools
+.n8n-test
+.n8n-home

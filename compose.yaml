@@ -1,0 +1,72 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME:?defina DB_NAME}
+      POSTGRES_USER: ${DB_USER:?defina DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?defina DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  api:
+    build:
+      context: .
+      dockerfile: deploy/api.Dockerfile
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      APP_CORS_ORIGINS: http://localhost:8080,http://127.0.0.1:8080
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash}
+      MONITOR_TOKEN: ${MONITOR_TOKEN:?defina MONITOR_TOKEN}
+      MONITOR_GEMINI_ENABLED: ${MONITOR_GEMINI_ENABLED:-false}
+      MONITOR_GEMINI_MODEL: ${MONITOR_GEMINI_MODEL:-}
+      MONITOR_NOTIFICATION_MODE: ${MONITOR_NOTIFICATION_MODE:-off}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:5678:5678"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  web:
+    build:
+      context: .
+      dockerfile: deploy/web.Dockerfile
+    network_mode: "service:api"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+  n8n:
+    image: ${N8N_IMAGE:-docker.n8n.io/n8nio/n8n:2.6.4}
+    network_mode: "service:api"
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:?defina N8N_ENCRYPTION_KEY}
+      N8N_DIAGNOSTICS_ENABLED: "false"
+      N8N_PERSONALIZATION_ENABLED: "false"
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+      GENERIC_TIMEZONE: America/Sao_Paulo
+    volumes:
+      - n8ndata:/home/node/.n8n
+      - ./n8n:/workflow:ro
+    restart: unless-stopped
+volumes:
+  pgdata:
+  n8ndata:

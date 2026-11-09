@@ -32,7 +32,7 @@ def group(rows, index):
             for label, group_rows in sorted(groups.items())]
 
 
-def snapshot(connection, start=None, end=None, region=None, category=None, days=30):
+def snapshot(connection, start=None, end=None, region=None, category=None, days=14):
     with connection.cursor() as cursor:
         cursor.execute("""
             SELECT min(data_pedido), max(data_pedido),
@@ -76,6 +76,12 @@ def snapshot(connection, start=None, end=None, region=None, category=None, days=
     }
 
 
+def read_snapshot(start=None, end=None, region=None, category=None):
+    with conectar_banco(somente_leitura=True) as connection:
+        connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
+        return snapshot(connection, start, end, region, category)
+
+
 @router.get("/operations/dashboard")
 def dashboard(start: date | None = None, end: date | None = None,
               region: str | None = None, category: str | None = None):
@@ -83,6 +89,4 @@ def dashboard(start: date | None = None, end: date | None = None,
         raise HTTPException(422, "Informe as duas datas em um intervalo de 1 a 366 dias.")
     if start and start.year < 1900:
         raise HTTPException(422, "Informe uma data a partir de 1900.")
-    with conectar_banco(somente_leitura=True) as connection:
-        connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
-        return snapshot(connection, start, end, region, category)
+    return read_snapshot(start, end, region, category)

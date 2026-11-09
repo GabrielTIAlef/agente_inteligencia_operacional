@@ -24,3 +24,8 @@ __pycache__/
 # Bancos de dados locais
 *.db
 *.sqlite3
+.pg-test/
+
+.local-tools/
+.n8n-test/
+.n8n-home/

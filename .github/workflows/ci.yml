@@ -1,0 +1,63 @@
+name: Validação
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    env:
+      DB_NAME: ops_demo
+      DB_USER: ops_demo
+      DB_PASSWORD: ci-disposable-postgres
+      MONITOR_TOKEN: ci-disposable-monitor-token
+      N8N_ENCRYPTION_KEY: ci-disposable-n8n-key
+      MONITOR_NOTIFICATION_MODE: preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: pip install -r requirements-dev.txt && python -m pytest -q
+      - run: npm ci && npm run lint && npm run build
+        working-directory: frontend
+      - run: docker compose up -d --build --wait
+      - name: Importar e executar o fluxo duas vezes
+        run: |
+          docker compose exec -T n8n sh -c 'cat > /tmp/monitor-credential.json' <<'EOF'
+          [{"id":"OpsMonitorAuth01","name":"Monitor operacional","type":"httpHeaderAuth","data":{"name":"Authorization","value":"Bearer ci-disposable-monitor-token"}}]
+          EOF
+          docker compose exec -T n8n n8n import:credentials --input=/tmp/monitor-credential.json
+          docker compose exec -T n8n n8n import:workflow --input=/workflow/operations-report.json
+          docker compose exec -T n8n n8n execute --id=OpsMonitorDaily1
+          docker compose exec -T n8n n8n execute --id=OpsMonitorDaily1
+      - name: Verificar API, persistência e isolamento
+        run: |
+          python - <<'PY'
+          import json
+          from urllib.request import urlopen, Request
+          from urllib.error import HTTPError
+
+          base = "http://127.0.0.1:8080"
+          def get(path):
+              with urlopen(base + path, timeout=10) as response:
+                  return json.load(response)
+          panel = get("/operations/dashboard")
+          assert panel["summary"]["orders"] == sum(d["orders"] for d in panel["daily"])
+          assert panel["summary"]["orders"] > 0
+          runs = get("/operations/monitor/runs")["runs"]
+          assert len(runs) == 1 and runs[0]["status"] == "completed", runs
+          assert runs[0]["report"]["method"] == "determinístico"
+          try:
+              urlopen(Request(base + "/operations/monitor/run", method="POST"), timeout=5)
+          except HTTPError as error:
+              assert error.code == 404
+          else:
+              raise AssertionError("O proxy expôs o endpoint do monitor")
+          PY
+      - if: failure()
+        run: docker compose logs --tail=80
+      - if: always()
+        run: docker compose down -v

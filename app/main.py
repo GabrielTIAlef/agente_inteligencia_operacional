@@ -7,6 +7,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from app.access import LOCAL_HOSTS, allowed_origins, local_access
+from app.dashboard import router as dashboard_router
+from app.monitor import router as monitor_router
 from app.reports import router as reports_router
 from app.agent_api import router as agent_router
 from fastapi.middleware.cors import CORSMiddleware
@@ -267,9 +269,6 @@ def get_database_regions_by_period(
 app.include_router(agent_router)
 
 app.include_router(reports_router)
-
-from app.dashboard import router as dashboard_router
-from app.monitor import router as monitor_router
 
 app.include_router(dashboard_router)
 app.include_router(monitor_router)

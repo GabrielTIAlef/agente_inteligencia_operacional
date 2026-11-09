@@ -1,5 +1,5 @@
 {
-  "name": "AI Operations — prévia de relatório",
+  "name": "Marketplace — monitor operacional",
   "active": false,
   "settings": {
     "timezone": "America/Sao_Paulo",
@@ -40,18 +40,89 @@
     },
     {
       "parameters": {
-        "url": "http://127.0.0.1:8000/reports/operations",
+        "method": "POST",
+        "url": "http://127.0.0.1:8000/operations/monitor/run",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {
-          "timeout": 20000
+          "timeout": 30000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
         }
       },
       "id": "40d6e681-899f-4a63-ae7a-bf957ac521b7",
-      "name": "Consultar prévia operacional",
+      "name": "Gerar e registrar relatório",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
         280,
         100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OpsMonitorAuth01",
+          "name": "Monitor operacional"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "af06d323-5e46-413a-90cc-54e9ff710719",
+      "name": "Há prévia de notificação?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        530,
+        100
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "83cdb86f-a0c2-496b-9b3a-5a37da433012",
+              "leftValue": "={{ $json.report.notification_candidate }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "998c353e-e4f1-4899-841f-d778a2f739fd",
+      "name": "Prévia local de alerta",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "parameters": {},
+      "position": [
+        780,
+        0
+      ]
+    },
+    {
+      "id": "e31d4f3d-8d5e-40a4-816a-6dc07f067a31",
+      "name": "Finalizar sem notificação",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "parameters": {},
+      "position": [
+        780,
+        200
       ]
     }
   ],
@@ -60,7 +131,7 @@
       "main": [
         [
           {
-            "node": "Consultar prévia operacional",
+            "node": "Gerar e registrar relatório",
             "type": "main",
             "index": 0
           }
@@ -71,12 +142,42 @@
       "main": [
         [
           {
-            "node": "Consultar prévia operacional",
+            "node": "Gerar e registrar relatório",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar e registrar relatório": {
+      "main": [
+        [
+          {
+            "node": "Há prévia de notificação?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Há prévia de notificação?": {
+      "main": [
+        [
+          {
+            "node": "Prévia local de alerta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Finalizar sem notificação",
             "type": "main",
             "index": 0
           }
         ]
       ]
     }
-  }
+  },
+  "id": "OpsMonitorDaily1"
 }

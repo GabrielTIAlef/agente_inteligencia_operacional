@@ -13,7 +13,7 @@ from google.genai import types
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from app.dashboard import snapshot
+from app.dashboard import read_snapshot
 from etl.load_orders import conectar_banco
 
 router = APIRouter(prefix="/operations/monitor")
@@ -76,17 +76,15 @@ def run_monitor(authorization: str = Header(default="")):
             if existing:
                 return existing
             try:
-                with connection.transaction():
-                    connection.execute("LOCK TABLE pedidos IN SHARE MODE")
-                    report = snapshot(connection, days=14)
-                    alerts = detect(report)
-                    summary, method = narrative(report, alerts)
-                    payload = Jsonb(jsonable_encoder({
-                        "period": report["period"], "metrics": report["summary"],
-                        "previous": report["previous"], "alerts": alerts,
-                        "summary": summary, "method": method,
-                        "notification_candidate": bool(alerts) and os.getenv("MONITOR_NOTIFICATION_MODE") == "preview",
-                    }))
+                report = read_snapshot()
+                alerts = detect(report)
+                summary, method = narrative(report, alerts)
+                payload = Jsonb(jsonable_encoder({
+                    "period": report["period"], "metrics": report["summary"],
+                    "previous": report["previous"], "alerts": alerts,
+                    "summary": summary, "method": method,
+                    "notification_candidate": bool(alerts) and os.getenv("MONITOR_NOTIFICATION_MODE") == "preview",
+                }))
             except Exception as error:
                 logger.warning("monitor_run_failed=%s", type(error).__name__)
                 cursor.execute("""
