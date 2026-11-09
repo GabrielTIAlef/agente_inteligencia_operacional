@@ -26,13 +26,18 @@ jobs:
       - run: docker compose up -d --build --wait
       - name: Importar e executar o fluxo duas vezes
         run: |
-          docker compose exec -T n8n sh -c 'cat > /tmp/monitor-credential.json' <<'EOF'
+          docker compose stop n8n
+          docker compose run --rm -T --entrypoint sh n8n -ec '
+            umask 077
+            cat > /tmp/monitor-credential.json
+            n8n import:credentials --input=/tmp/monitor-credential.json
+            rm /tmp/monitor-credential.json
+            n8n import:workflow --input=/workflow/operations-report.json
+            n8n execute --id=OpsMonitorDaily1
+            n8n execute --id=OpsMonitorDaily1
+          ' <<'EOF'
           [{"id":"OpsMonitorAuth01","name":"Monitor operacional","type":"httpHeaderAuth","data":{"name":"Authorization","value":"Bearer ci-disposable-monitor-token"}}]
           EOF
-          docker compose exec -T n8n n8n import:credentials --input=/tmp/monitor-credential.json
-          docker compose exec -T n8n n8n import:workflow --input=/workflow/operations-report.json
-          docker compose exec -T n8n n8n execute --id=OpsMonitorDaily1
-          docker compose exec -T n8n n8n execute --id=OpsMonitorDaily1
       - name: Verificar API, persistência e isolamento
         run: |
           python - <<'PY'
