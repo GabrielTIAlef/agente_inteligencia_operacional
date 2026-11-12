@@ -5,7 +5,24 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: ops_demo
+          POSTGRES_USER: ops_demo
+          POSTGRES_PASSWORD: ci-disposable-postgres
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U ops_demo -d ops_demo"
+          --health-interval 3s
+          --health-timeout 3s
+          --health-retries 20
     env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5433
+      RUN_DB_TESTS: '1'
       DB_NAME: ops_demo
       DB_USER: ops_demo
       DB_PASSWORD: ci-disposable-postgres
@@ -20,7 +37,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: pip install -r requirements-dev.txt && python -m pytest -q
+      - name: Testar Python com PostgreSQL
+        run: |
+          pip install -r requirements-dev.txt
+          python -m etl.migrate
+          python -m pytest -q -p no:cacheprovider
       - run: npm ci && npm run lint && npm run build
         working-directory: frontend
       - run: docker compose up -d --build --wait

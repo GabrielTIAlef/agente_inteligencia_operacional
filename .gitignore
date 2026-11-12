@@ -29,3 +29,20 @@ __pycache__/
 .local-tools/
 .n8n-test/
 .n8n-home/
+
+# Credenciais, backups e artefatos privados
+*.sqlite
+*.db-wal
+*.db-shm
+*.sqlite*
+*.dump
+*.backup
+*.bak
+*.sql.gz
+backups/
+secrets/
+credentials/
+*.pem
+*.key
+playwright-report/
+test-results/

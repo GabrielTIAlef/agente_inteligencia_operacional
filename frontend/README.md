@@ -1,16 +1,14 @@
-# React + Vite
+# Interface de inteligência operacional
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React/Vite com duas abas: Painel operacional e Monitoramento, além do chat flutuante compartilhado. A interface consulta a API local; não armazena chaves Gemini ou token do monitor.
 
-Currently, two official plugins are available:
+Com Node 24 e a API na porta 8000:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```powershell
+npm ci
+npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
+npm run lint
+npm run build
+```
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Veja [instalação completa](../docs/SETUP.md), [contratos e entrega](../docs/FRONTEND-DELIVERY.md) e [evidências](../docs/VALIDATION.md). O teste opcional em `tests/demo.mjs` precisa de Playwright e Edge locais; não chama Gemini nem dispara o monitor.
