@@ -10,7 +10,7 @@ const sugestoes = [
   'Qual categoria apresenta mais atrasos?',
 ]
 
-function ChatPanel() {
+function ChatPanel({ onClose, active }) {
   const [mensagens, setMensagens] = useState([
     {
       id: 0,
@@ -24,7 +24,11 @@ function ChatPanel() {
 
   const [pergunta, setPergunta] = useState('')
   const [carregando, setCarregando] = useState(false)
+  const inputRef = useRef(null)
   const fimConversa = useRef(null)
+  const [cooldown, setCooldown] = useState(false)
+  useEffect(() => { if (active) inputRef.current?.focus() }, [active])
+  useEffect(() => { if (!cooldown) return; const timer = setTimeout(() => setCooldown(false), 30000); return () => clearTimeout(timer) }, [cooldown])
   const proximoId = useRef(1)
   const requisicaoAtual = useRef(null)
 
@@ -53,7 +57,7 @@ function ChatPanel() {
   async function enviarPergunta(texto) {
     const mensagem = texto.trim()
 
-    if (!mensagem || requisicaoAtual.current || mensagem.length > 500) {
+    if (!mensagem || requisicaoAtual.current || cooldown || mensagem.length > 500) {
       return
     }
 
@@ -72,11 +76,13 @@ function ChatPanel() {
         },
         body: JSON.stringify({
           message: mensagem,
+          history: mensagens.filter(m => (m.role === 'user' || m.role === 'assistant') && m.id !== 0).slice(-6).map(m => ({role: m.role, content: m.content.slice(0, 1500)})),
         }),
         signal: controller.signal,
       })
 
       if (!resposta.ok) {
+        if (resposta.status === 429) setCooldown(true)
         const body = await resposta.json().catch(() => null)
         const message = typeof body?.detail === 'string' ? body.detail : 'Não foi possível consultar o agente.'
         throw errorWithTrace(resposta, message)
@@ -126,9 +132,7 @@ function ChatPanel() {
           <h2>AI Operations Agent</h2>
           <p>Assistente de inteligência operacional</p>
         </div>
-        <span className="chat-mode-badge">
-          Dados sintéticos
-        </span>
+<button type="button" className="chat-close" aria-label="Recolher chat" onClick={onClose}>×</button>
       </header>
 
       <div
@@ -169,12 +173,14 @@ function ChatPanel() {
       </div>
 
       <div className="chat-bottom">
+        {cooldown && <p role="alert">Cota atingida. Envio pausado por 30 segundos; a renovação depende do Gemini.</p>}
+        <p className="chat-disclaimer">{pergunta.length}/500 caracteres · envio manual, sem repetição automática</p>
         <div className="chat-suggestions">
           {sugestoes.map((sugestao) => (
             <button
               key={sugestao}
               type="button"
-              disabled={carregando}
+              disabled={carregando || cooldown}
               onClick={() => enviarPergunta(sugestao)}
             >
               {sugestao}
@@ -194,6 +200,7 @@ function ChatPanel() {
           </label>
 
           <textarea
+            ref={inputRef}
             id="chat-input"
             placeholder="Pergunte sobre os indicadores..."
             value={pergunta}
@@ -212,7 +219,7 @@ function ChatPanel() {
 
           <button
             type="submit"
-            disabled={!pergunta.trim() || carregando}
+            disabled={!pergunta.trim() || carregando || cooldown}
           >
             {carregando ? 'Enviando...' : 'Enviar →'}
           </button>
@@ -223,8 +230,7 @@ function ChatPanel() {
           importantes na fonte de dados.
         </p>
         <p className="chat-disclaimer">
-          Cada pergunta é independente; o histórico visual
-          não é enviado ao Gemini.
+          Contexto: até 6 mensagens recentes, limitadas a 1.500 caracteres cada. Mensagens antigas ficam visíveis, mas saem do contexto. Filtros do painel não são enviados à IA.
         </p>
       </div>
     </section>

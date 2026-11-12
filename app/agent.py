@@ -103,16 +103,20 @@ REGRAS:
 
 
 
-def criar_chat():
+def criar_chat(history=None):
     """Cria uma sessão de chat com histórico."""
 
     chave = os.environ["GEMINI_API_KEY"]
 
-    client = genai.Client(api_key=chave, http_options=types.HttpOptions(timeout=15000))
+    client = genai.Client(api_key=chave, http_options=types.HttpOptions(timeout=15000, retry_options=types.HttpRetryOptions(attempts=1)))
 
     try:
         chat = client.chats.create(
-            model=os.getenv("GEMINI_MODEL", "gemini-3.5-flash"),
+            model=os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite"),
+            history=[types.Content(
+                role='model' if item['role'] == 'assistant' else 'user',
+                parts=[types.Part.from_text(text=item['content'])],
+            ) for item in (history or [])],
             config=types.GenerateContentConfig(
                 system_instruction=INSTRUCOES,
                 tools=[
@@ -135,10 +139,10 @@ def criar_chat():
     return client, chat
 
 
-def perguntar_ao_agente(pergunta: str) -> str:
-    """Permite realizar uma consulta independente."""
+def perguntar_ao_agente(pergunta: str, history=None) -> str:
+    """Consulta com contexto opcional limitado na fronteira HTTP."""
 
-    client, chat = criar_chat()
+    client, chat = criar_chat(history)
 
     try:
         resposta = chat.send_message(pergunta)

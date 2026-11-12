@@ -1,4 +1,5 @@
 import logging
+from typing import Literal
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field, field_validator
@@ -14,7 +15,14 @@ router = APIRouter(
 )
 
 
+class ContextMessage(BaseModel):
+    role: Literal['user', 'assistant']
+    content: str = Field(min_length=1, max_length=1500)
+
+
 class ChatRequest(BaseModel):
+    history: list[ContextMessage] = Field(default_factory=list, max_length=6)
+
     message: str = Field(
         min_length=1,
         max_length=500,
@@ -42,9 +50,13 @@ class ChatResponse(BaseModel):
 @router.post("/chat", response_model=ChatResponse)
 def conversar_com_agente(requisicao: ChatRequest):
     try:
-        resposta = perguntar_ao_agente(
-            requisicao.message
-        )
+        if requisicao.history:
+            resposta = perguntar_ao_agente(
+                requisicao.message,
+                history=[item.model_dump() for item in requisicao.history],
+            )
+        else:
+            resposta = perguntar_ao_agente(requisicao.message)
 
         return ChatResponse(
             status="success",

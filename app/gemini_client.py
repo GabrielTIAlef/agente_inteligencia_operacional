@@ -19,7 +19,7 @@ def perguntar_ao_gemini(pergunta: str) -> str:
 
     with genai.Client(api_key=chave) as client:
         resposta = client.models.generate_content(
-            model="gemini-3.5-flash",
+            model="gemini-3.1-flash-lite",
             contents=pergunta,
         )
 
