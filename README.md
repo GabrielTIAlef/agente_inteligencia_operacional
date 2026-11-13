@@ -1,10 +1,40 @@
 # Agente de Inteligência Operacional
 
-Aplicação de portfólio que reúne **BI interativo, consultas com Gemini e monitoramento com n8n** para analisar pedidos de um marketplace fictício. O objetivo é facilitar a investigação de volume, cancelamento e atraso por período, região, categoria e status.
+Investigar uma operação exige relacionar volume, cancelamento e atraso aos
+recortes certos. Neste projeto autoral, construí um caso de **análise de dados, BI, SQL, automação
+e IA aplicada** sobre um marketplace fictício.
 
-**Demonstração pública:** [Inteligência operacional](https://inteligencia-operacional.duckdns.org/), publicada na VM Oracle Always Free com HTTPS, PostgreSQL e chat Gemini. Na VM de 1 GB, uma agenda systemd executa o monitor às 09h de São Paulo; o n8n permanece disponível no exemplo local. A base contém **1.000 pedidos sintéticos de outubro de 2026**, cinco regiões e três categorias. **Valor dos pedidos não é receita:** inclui todos os status do recorte, inclusive cancelados. Consulte a [operação e limites da implantação](docs/ORACLE-ALWAYS-FREE.md).
+O cenário foi escolhido para demonstrar como conecto perguntas de negócio,
+definição de indicadores, preparação de dados e formas complementares de análise.
+O painel e o assistente tornam esse trabalho visível; o código e os testes
+permitem aprofundar a avaliação das decisões.
 
-![Painel operacional atual, consultando PostgreSQL local](docs/evidence/painel-atual.jpg)
+## Problema proposto e minha atuação
+
+Conhecer o total de pedidos não basta para entender a operação. Neste cenário,
+as perguntas que orientam o trabalho são: onde se concentram cancelamentos e
+atrasos? O volume mudou em relação à janela anterior? Quais recortes merecem
+investigação? Como tornar essas consultas mais acessíveis?
+
+Minha atuação reúne a construção da base sintética, ETL e persistência em
+PostgreSQL; definição dos indicadores e consultas; desenvolvimento do painel;
+integração do assistente com ferramentas de leitura; e monitoramento com regras
+explícitas e histórico. A implantação serve como evidência de integração dessas
+partes, enquanto a avaliação técnica pode ser feita pelo repositório.
+
+O problema e os dados são simulados para este estudo autoral.
+
+## Por que combinei painel, monitor e assistente
+
+O **painel** permite explorar e comparar recortes; o **monitor** repete regras
+conhecidas e registra sinais de atenção; o **assistente** oferece outra forma
+de consultar indicadores. Os cálculos ficam no sistema, com ferramentas de
+leitura restritas, em vez de depender apenas de texto gerado pelo modelo.
+
+Essa separação demonstra uma escolha de arquitetura ligada à análise:
+flexibilidade para investigar, consistência para acompanhar e limites claros
+para interpretar respostas da IA. No exemplo local o n8n aciona a API; na VM,
+essa chamada é feita pelo systemd, conforme a documentação de implantação.
 
 ## O que este projeto demonstra
 
@@ -16,6 +46,25 @@ Aplicação de portfólio que reúne **BI interativo, consultas com Gemini e mon
 | Consultar dados em linguagem natural | Chat flutuante nas duas abas | Gemini com ferramentas autorizadas de leitura e contexto limitado |
 
 O trabalho conecta modelagem de indicadores, API, integração de serviços, interface responsiva e testes. Não há medição de redução de custos, ganho de produtividade ou resultado financeiro de uma operação real.
+
+## Como avaliar este caso no portfólio
+
+| Aspecto do trabalho | Evidência para aprofundar |
+| --- | --- |
+| Definição do recorte, comparação e indicadores | [Dashboard e cálculos](app/dashboard.py) |
+| Chaves, tipos, validação e carga transacional | [ETL](etl/load_orders.py) e [schema](etl/schema.sql) |
+| Relação entre regras e sinais de atenção | [Monitor determinístico](app/monitor.py) |
+| Uso de IA com acesso limitado a dados | [Ferramentas](app/tools.py) e [agente](app/agent.py) |
+| Comunicação visual e investigação dos indicadores | Capturas abaixo e [interface](frontend/src/App.jsx) |
+
+O resultado demonstrado é a integração dessas etapas sobre 1.000 pedidos
+fictícios. A leitura de uma taxa elevada identifica um ponto de investigação;
+não comprova a causa do problema ou o impacto de uma ação empresarial.
+Testes e documentação sustentam a avaliação técnica dessas decisões.
+
+**Evidência visual do projeto:** [abrir a demonstração](https://inteligencia-operacional.duckdns.org/), publicada na VM Oracle Always Free com HTTPS, PostgreSQL e chat Gemini. Na VM de 1 GB, uma agenda systemd executa o monitor às 09h de São Paulo; o n8n permanece disponível no exemplo local. A base contém **1.000 pedidos sintéticos de outubro de 2026**, cinco regiões e três categorias. **Valor dos pedidos não é receita:** inclui todos os status do recorte, inclusive cancelados. Consulte a [operação e limites da implantação](docs/ORACLE-ALWAYS-FREE.md).
+
+![Painel operacional atual, consultando PostgreSQL local](docs/evidence/painel-atual.jpg)
 
 ## Funcionalidades e telas reais
 
@@ -74,6 +123,9 @@ flowchart LR
 
 Dependências Python estão fixadas em [requirements.txt](requirements.txt); o frontend possui [package-lock.json](frontend/package-lock.json). As rotas principais são `GET /operations/dashboard`, `GET /reports/operations`, `GET /operations/monitor/runs`, `POST /operations/monitor/run` e `POST /agent/chat`. A API local documenta os contratos em [Swagger](http://127.0.0.1:8000/docs), acessível após iniciar os serviços.
 
+<details>
+<summary>Reproduzir localmente para aprofundar a avaliação técnica</summary>
+
 ## Executar localmente no Windows
 
 Pré-requisitos: Git, Python 3.12, PostgreSQL 17 iniciado e Node 24 com npm. O script atual localiza o Node nas instalações do **Author Software NVM** e o n8n nessa mesma instalação; veja a alternativa manual em [instalação local](docs/SETUP.md).
@@ -106,6 +158,8 @@ O início aplica o schema e carrega o CSV apenas se a tabela de pedidos estiver 
 | Editor n8n | http://127.0.0.1:5678 |
 
 Para importar o workflow, selecionar a credencial Header Auth e usar Compose opcionalmente, siga [SETUP.md](docs/SETUP.md). A versão n8n indicada reproduz o exemplo; sua segurança e compatibilidade devem ser revistas antes de qualquer implantação remota.
+
+</details>
 
 ## Testes e evidências
 
