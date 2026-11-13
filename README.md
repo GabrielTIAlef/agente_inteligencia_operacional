@@ -2,7 +2,7 @@
 
 Aplicação de portfólio que reúne **BI interativo, consultas com Gemini e monitoramento com n8n** para analisar pedidos de um marketplace fictício. O objetivo é facilitar a investigação de volume, cancelamento e atraso por período, região, categoria e status.
 
-**Estado:** demonstração local validada; hospedagem 24/7 ainda pendente. A base contém **1.000 pedidos sintéticos de outubro de 2026**, cinco regiões e três categorias. **Valor dos pedidos não é receita:** inclui todos os status do recorte, inclusive cancelados.
+**Demonstração pública:** [Inteligência operacional](https://inteligencia-operacional.duckdns.org/), publicada na VM Oracle Always Free com HTTPS, PostgreSQL e chat Gemini. Na VM de 1 GB, uma agenda systemd executa o monitor às 09h de São Paulo; o n8n permanece disponível no exemplo local. A base contém **1.000 pedidos sintéticos de outubro de 2026**, cinco regiões e três categorias. **Valor dos pedidos não é receita:** inclui todos os status do recorte, inclusive cancelados. Consulte a [operação e limites da implantação](docs/ORACLE-ALWAYS-FREE.md).
 
 ![Painel operacional atual, consultando PostgreSQL local](docs/evidence/painel-atual.jpg)
 
@@ -34,7 +34,7 @@ O trabalho conecta modelagem de indicadores, API, integração de serviços, int
 
 ![Monitoramento atual com histórico persistido pela API](docs/evidence/monitoramento-atual.jpg)
 
-O n8n aciona a API, que aplica as regras e registra o resultado. A tela permite consultar até 20 registros de `monitor_runs`, filtrar status e inspecionar relatórios. Atualizar a tela apenas relê os dados; não dispara o monitor.
+No exemplo local, o n8n aciona a API; na demonstração pública, essa função é executada pela agenda systemd. A API aplica as mesmas regras e registra o resultado. A tela permite consultar até 20 registros de `monitor_runs`, filtrar status e inspecionar relatórios. Atualizar a tela apenas relê os dados; não dispara o monitor.
 
 | Regra | Limiar da demonstração |
 | --- | --- |
@@ -69,7 +69,7 @@ flowchart LR
 | Interface | React 19, Vite 8, CSS; gráficos e interações da aplicação |
 | API e dados | Python, FastAPI, Pydantic, psycopg, PostgreSQL 17 |
 | IA | Google Gen AI SDK; `GEMINI_MODEL` configurável |
-| Automação | n8n, repetição controlada e persistência pela API |
+| Automação | n8n no exemplo local; systemd na VM de 1 GB, com persistência pela mesma API |
 | Qualidade e execução | pytest, Oxlint, build Vite, GitHub Actions; PowerShell local e Compose opcional |
 
 Dependências Python estão fixadas em [requirements.txt](requirements.txt); o frontend possui [package-lock.json](frontend/package-lock.json). As rotas principais são `GET /operations/dashboard`, `GET /reports/operations`, `GET /operations/monitor/runs`, `POST /operations/monitor/run` e `POST /agent/chat`. A API local documenta os contratos em [Swagger](http://127.0.0.1:8000/docs), acessível após iniciar os serviços.
@@ -133,10 +133,10 @@ As capturas são da aplicação local atual com API e PostgreSQL reais e dados s
 
 - A base não contém pagamentos, repasses, margens, prazo prometido ou data de entrega; não permite calcular receita reconhecida, lucro ou SLA logístico.
 - O histórico do painel não é a telemetria completa do n8n: não informa duração, execução em andamento ou agenda ativa.
-- Gemini depende de disponibilidade e cota; o controle de uso atual é local e por processo. Autenticação e limite persistente ainda são necessários para acesso público.
-- Não há hospedagem, domínio público, garantia de disponibilidade, notificações externas ou integração com pedidos reais.
+- Gemini depende de disponibilidade e cota. O chat público usa HTTPS, limite de 2 perguntas/minuto por IP, 30 perguntas/dia no total e uma pergunta simultânea; a chave fica no servidor. O titular deve manter seu projeto no plano Free.
+- A demonstração usa hospedagem e domínio gratuitos, sem garantia de disponibilidade. Não há notificações externas nem integração com pedidos reais. Backups são feitos diariamente na VM e copiados automaticamente para o Windows quando o computador está ligado, conectado e com a sessão aberta.
 
-O plano de implantação inclui HTTPS, controle de acesso, contas de banco com privilégio mínimo, backups com restauração testada, reinício automático e observabilidade. Veja [implantação](docs/DEPLOYMENT.md) e [roadmap](docs/ROADMAP.md). A agenda só deve ser ativada após validação e autorização específica.
+A implantação inclui HTTPS, portas internas protegidas, contas de banco com privilégio mínimo, backups com restauração testada, reinício automático e monitoramento por logs. Veja [implantação](docs/DEPLOYMENT.md), [backup externo](docs/OFFSITE-BACKUP.md) e [roadmap](docs/ROADMAP.md). Não há garantia de operação contínua: a Oracle pode retomar VMs ociosas e o Gemini está sujeito às cotas do plano Free.
 
 ## Documentação e manutenção
 
@@ -144,6 +144,6 @@ O plano de implantação inclui HTTPS, controle de acesso, contas de banco com p
 - [Validação atual e capturas](docs/VALIDATION.md)
 - [Histórico de validação local](docs/LOCAL-READINESS.md)
 - [Entrega e contratos do frontend](docs/FRONTEND-DELIVERY.md)
-- [Implantação futura](docs/DEPLOYMENT.md) · [Roadmap](docs/ROADMAP.md)
+- [Implantação Oracle](docs/ORACLE-ALWAYS-FREE.md) · [Backup externo automático](docs/OFFSITE-BACKUP.md) · [Roadmap](docs/ROADMAP.md)
 
 Mantido por [GabrielTIAlef](https://github.com/GabrielTIAlef). Sugestões e problemas sem credenciais ou dados pessoais podem ser registrados em [Issues](https://github.com/GabrielTIAlef/agente_inteligencia_operacional/issues).

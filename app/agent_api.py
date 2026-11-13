@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import Literal
 
 from fastapi import APIRouter, HTTPException
@@ -6,6 +7,7 @@ from pydantic import BaseModel, Field, field_validator
 from google.genai.errors import ClientError
 from app.access import trace_id
 from app.agent import perguntar_ao_agente
+from app.chat_quota import reserve_request
 
 logger = logging.getLogger("uvicorn.error")
 
@@ -49,6 +51,13 @@ class ChatResponse(BaseModel):
 
 @router.post("/chat", response_model=ChatResponse)
 def conversar_com_agente(requisicao: ChatRequest):
+    if os.getenv("APP_PUBLIC_DEPLOYMENT") == "true" and (
+        os.getenv("GEMINI_FREE_TIER_CONFIRMED") != "true"
+        or not os.getenv("GEMINI_API_KEY")
+    ):
+        raise HTTPException(503, "Chat desativado até confirmar acesso gratuito ao Gemini.")
+    if os.getenv("APP_PUBLIC_DEPLOYMENT") == "true" and not reserve_request():
+        raise HTTPException(429, "Limite diário da demonstração atingido.")
     try:
         if requisicao.history:
             resposta = perguntar_ao_agente(

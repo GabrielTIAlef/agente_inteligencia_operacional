@@ -1,6 +1,6 @@
 # Preparação para hospedagem 24/7
 
-Estado em 12/11/2026: aplicação validada localmente; nenhuma implantação cloud ou ativação de agenda faz parte desta atualização do GitHub. Este documento é um plano, não uma comprovação de operação contínua.
+Atualização em 12/11/2026: painel, monitor e chat Gemini foram implantados na VM Oracle existente e verificados por HTTPS público. Há cópia automática de backups para o Windows, condicionada à disponibilidade do computador. Consulte [ORACLE-ALWAYS-FREE.md](ORACLE-ALWAYS-FREE.md) para arquitetura, testes, operação e limites, e [OFFSITE-BACKUP.md](OFFSITE-BACKUP.md) para a cópia externa. As seções abaixo preservam o plano geral de hospedagem; não comprovam disponibilidade contínua.
 
 ## Decisões e requisitos antes de provisionar
 

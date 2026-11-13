@@ -46,3 +46,4 @@ credentials/
 *.key
 playwright-report/
 test-results/
+deployment.tar.gz

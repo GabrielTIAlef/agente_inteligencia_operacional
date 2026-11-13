@@ -196,7 +196,7 @@ function Monitor({ runs }) {
   const latest = runs.find(run => run.report)?.report
   const visible = runs.filter(run => status === 'all' || run.status === status)
   return <>
-    <div className="notice">Monitor automático · histórico persistido pela API, acionado pelo n8n. A agenda e a duração das execuções não são informadas por esta API. Exportação operacional disponível no Dashboard.</div>
+    <div className="notice">Monitor automático · histórico persistido pela API. {import.meta.env.VITE_MONITOR_SCHEDULE || 'Acionado pelo agendador configurado no ambiente.'} Exportação operacional disponível no Dashboard.</div>
     <dl className="metrics monitor-metrics">{[
       ['Execuções registradas', runs.length],
       ['Concluídas', runs.filter(r => r.status === 'completed').length],
@@ -222,7 +222,7 @@ function Monitor({ runs }) {
             {run.report.alerts.length ? <ul>{run.report.alerts.map(alert => <li key={alert.label}><strong>{alert.label}</strong> · {rate(alert.value)} · limiar {rate(alert.threshold)} · amostra {alert.sample} pedidos</li>)}</ul> : <p>Nenhuma regra atingiu o limiar.</p>}
             <p>{run.report.notification_candidate ? 'Candidato a prévia de notificação; não confirma envio externo.' : 'Sem prévia de notificação selecionada.'}</p>
             <details><summary>Inspecionar relatório registrado</summary><pre className="report-preview">{JSON.stringify(run.report, null, 2)}</pre></details>
-          </> : <p>A análise falhou. Consulte a execução no n8n; atualizar esta tela apenas relê o histórico.</p>}
+          </> : <p>A análise falhou. Consulte os registros do monitor; atualizar esta tela apenas relê o histórico.</p>}
         </details>)}
       </section>
       <section className="report-section"><h2>Regras e alertas</h2><p>Regras determinísticas aplicadas pelo backend.</p>
@@ -253,7 +253,7 @@ export default function App() {
   return <>
     <a className="skip-link" href="#main">Ir para o conteúdo</a>
     <header className="masthead">
-      <div className="brand"><span className="brand-icon">◈</span><div><strong>Inteligência operacional</strong></div></div>
+      <div className="brand"><img className="brand-icon" src="/favicon.svg?v=2" alt="" aria-hidden="true" /><div><strong>Inteligência operacional</strong></div></div>
       <nav aria-label="Menu principal">{Object.entries(pages).map(([key, label]) =>
         <button key={key} onClick={() => setPage(key)} aria-current={page === key ? 'page' : undefined}>{label}</button>)}</nav>
     </header>
@@ -266,6 +266,8 @@ export default function App() {
       {page === 'automations' && <DataView key={'monitor' + reset} path="/operations/monitor/runs">{({ runs }) => <Monitor runs={runs} />}</DataView>}
 
     </main>
-    <FloatingChat />
+    {import.meta.env.VITE_CHAT_ENABLED === 'false'
+      ? <p className="notice">Chat de IA indisponível nesta demonstração. O painel e o monitoramento continuam funcionando.</p>
+      : <FloatingChat />}
   </>
 }
